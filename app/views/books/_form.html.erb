@@ -1,0 +1,23 @@
+ <%= simple_form_for @book, :html => {:multipart => true} do |f| %>
+
+ <%= select_tag(:genre_id, options_for_select(@genres), :prompt => "Selecet a Genre") %>
+
+ <p><p>
+
+ 	<%= f.file_field :book_imgage %>
+
+ 	<%= f.input :titleLstring, label: "Title" %>
+ 	<%= f.input :details, label: "Description" %> 
+ 	<%= f.input :author %> 
+	<%= f.input :amazon_link, label: "Add the Amazon link for your book to get more visibility and sales." %>
+ 	<%= f.button :submit, :class => "btn-custom2" %>
+
+ 	  <% end %>
+ 	<br>
+ 	<%= link_to "Back", root_path %>
+ 
+ 
+ 
+ 
+ 
+ 
