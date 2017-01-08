@@ -1,0 +1,477 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE ar_internal_metadata OWNER TO jimvickery;
+
+--
+-- Name: books; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE books (
+    id integer NOT NULL,
+    "titleLstring" character varying,
+    details character varying,
+    author character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    genre_id integer,
+    book_imgage_file_name character varying,
+    book_imgage_content_type character varying,
+    book_imgage_file_size integer,
+    book_imgage_updated_at timestamp without time zone,
+    book_image_file_name character varying,
+    book_image_content_type character varying,
+    book_image_file_size integer,
+    book_image_updated_at timestamp without time zone,
+    amazon_link character varying
+);
+
+
+ALTER TABLE books OWNER TO jimvickery;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: jimvickery
+--
+
+CREATE SEQUENCE books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE books_id_seq OWNER TO jimvickery;
+
+--
+-- Name: books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jimvickery
+--
+
+ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: genres; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE genres (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE genres OWNER TO jimvickery;
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE; Schema: public; Owner: jimvickery
+--
+
+CREATE SEQUENCE genres_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE genres_id_seq OWNER TO jimvickery;
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jimvickery
+--
+
+ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
+-- Name: reviews; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE reviews (
+    id integer NOT NULL,
+    rating integer,
+    comment text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    book_id integer
+);
+
+
+ALTER TABLE reviews OWNER TO jimvickery;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE; Schema: public; Owner: jimvickery
+--
+
+CREATE SEQUENCE reviews_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE reviews_id_seq OWNER TO jimvickery;
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jimvickery
+--
+
+ALTER SEQUENCE reviews_id_seq OWNED BY reviews.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO jimvickery;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: jimvickery
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip inet,
+    last_sign_in_ip inet,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone
+);
+
+
+ALTER TABLE users OWNER TO jimvickery;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: jimvickery
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO jimvickery;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: jimvickery
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: books id; Type: DEFAULT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY books ALTER COLUMN id SET DEFAULT nextval('books_id_seq'::regclass);
+
+
+--
+-- Name: genres id; Type: DEFAULT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: reviews id; Type: DEFAULT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY reviews ALTER COLUMN id SET DEFAULT nextval('reviews_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2016-12-28 06:37:23.260074	2016-12-28 06:37:23.260074
+\.
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY books (id, "titleLstring", details, author, created_at, updated_at, user_id, genre_id, book_imgage_file_name, book_imgage_content_type, book_imgage_file_size, book_imgage_updated_at, book_image_file_name, book_image_content_type, book_image_file_size, book_image_updated_at, amazon_link) FROM stdin;
+7	This Is How You Pitch: How To Kick Ass In Your First Years of PR	So you want to work in PR? Does the idea of glamorous parties, open bars  and rubbing elbows with the rich and famous sound like an exciting career  for you? Then neither this book or a career in Public Relations are for you. This book will teach you all you need to know about public relations, from  what to do on your first day at your desk to how to start your own PR  agency. You’ll learn the core skill of the business: pitching. It’ll also  tell you how to avoid becoming a buzzword-spitting automaton that the media  will hate. Written by a PR veteran who has done it all – and made every mistake along the way – This Is How You Pitch is an honest, direct guidebook to Public Relations and how to survive your first years in the business and how to turn it into a prosperous, fulfilling career.	Ed Zitron and Warren Ellis	2016-12-30 06:44:48.170207	2017-01-05 09:25:01.361804	1	15	511EiQKK-cL.jpg	image/jpeg	36709	2017-01-02 06:48:21.254093	\N	\N	\N	\N	https://www.amazon.com/This-How-You-Pitch-First/dp/0989608042/ref=sr_1_1?ie=UTF8&qid=1483608286&sr=8-1&keywords=This+Is+How+You+Pitch%3A+How+To+Kick+Ass+In+Your+First+Years+of+PR
+11	The Book on Rental Property Investing: How to Create Wealth and Passive Income Through Intelligent Buy & Hold Real Estate Investing!	In The Book on Rental Property Investing, real estate investor and co-host of the BiggerPockets Podcast Brandon Turner has one goal in mind: to give you every strategy, tool, tip, and technique needed to become a millionaire rental property investor―while helping you avoid the junk that pulls down so many wannabes!  Written for both new and experienced investors, this book will impart years of experience through the informative and entertaining lessons contained within. You’ll find practical, up-to-date, exciting strategies that investors across the world are using to build wealth and significant cash flow through rental properties.   Inside, you’ll discover:  • Why many real estate investors fail, and how you can ensure you don’t! • 4 unique, easy-to-follow strategies you can begin implementing today. • Creative tips for finding incredible deals―even in competitive markets. • How to achieve success without touching a toilet, paintbrush, or broom. • Actionable ideas for financing rentals, no matter how much cash you have. • Advice on keeping your wealth by deferring (and eliminating) taxes.  • And so much more!	Brandon Turner	2016-12-31 06:24:07.382116	2017-01-05 09:28:31.342803	3	1	51KOW1_0ZyL.jpg	image/jpeg	39122	2017-01-02 06:52:46.832635	\N	\N	\N	\N	https://www.amazon.com/Book-Rental-Property-Investing-Intelligent/dp/099071179X/ref=sr_1_1?ie=UTF8&qid=1483608191&sr=8-1&keywords=The+Book+on+Rental+Property+Investing%3A+How+to+Create+Wealth+and+Passive+Income+Through+Intelligent+Buy+%26+Hold+Real+Estate+Investing%21
+9	The Bogleheads' Guide to Investing	The irreverent guide to investing, Boglehead style The Boglehead's Guide to Investing is a DIY handbook that espouses the sage investment wisdom of John C. Bogle. This witty and wonderful book offers contrarian advice that provides the first step on the road to investment success, illustrating how relying on typical "common sense" promoted by Wall Street is destined to leave you poorer. This updated edition includes new information on backdoor Roth IRAs and ETFs as mainstream buy and hold investments, estate taxes and gifting, plus changes to the laws regarding Traditional and Roth IRAs, and 401k and 403b retirement plans. With warnings and principles both precisely accurate and grandly counterintuitive, the Boglehead authors show how beating the market is a zero-sum game.	Taylor Larimore	2016-12-31 03:40:52.042423	2017-01-05 09:29:17.363494	3	1	51hIN5N4BlL.jpg	image/jpeg	50919	2017-01-02 06:53:33.164601	\N	\N	\N	\N	https://www.amazon.com/Bogleheads-Guide-Investing-Taylor-Larimore/dp/1118921283/ref=sr_1_1?ie=UTF8&qid=1483608545&sr=8-1&keywords=The+Bogleheads%27+Guide+to+Investing
+6	99 Minute Millionaire: The Simplest and Easiest Book Ever on Getting Started Investing and Becoming Rock Star Rich 	Everybody Writes is a go-to guide to attracting and retaining customers through stellar online communication, because in our content-driven world, every one of us is, in fact, a writer.  If you have a web site, you are a publisher. If you are on social media, you are in marketing. And that means that we are all relying on our words to carry our marketing messages. We are all writers.  Yeah, but who cares about writing anymore? In a time-challenged world dominated by short and snappy, by click-bait headlines and Twitter streams and Instagram feeds and gifs and video and Snapchat and YOLO and LOL and #tbt. . . does the idea of focusing on writing seem pedantic and ordinary?  Actually, writing matters more now, not less. Our online words are our currency; they tell our customers who we are.  Our writing can make us look smart or it can make us look stupid. It can make us seem fun, or warm, or competent, or trustworthy. But it can also make us seem humdrum or discombobulated or flat-out boring.  That means you've got to choose words well, and write with economy and the style and honest empathy for your customers. And it means you put a new value on an often-overlooked skill in content marketing: How to write, and how to tell a true story really, really well. That's true whether you're writing a listicle or the words on a Slideshare deck or the words you're reading right here, right now...  And so being able to communicate well in writing isn't just nice; it's necessity. And it's also the oft-overlooked cornerstone of nearly all our content marketing.  In Everybody Writes, top marketing veteran Ann Handley gives expert guidance and insight into the process and strategy of content creation, production and publishing, with actionable how-to advice designed to get results.  These lessons and rules apply across all of your online assets — like web pages, home page, landing pages, blogs, email, marketing offers, and on Facebook, Twitter, LinkedIn, and other social media. Ann deconstructs the strategy and delivers a practical approach to create ridiculously compelling and competent content. It's designed to be the go-to guide for anyone creating or publishing any kind of online content — whether you're a big brand or you're small and solo.	Ann Handley	2016-12-30 06:42:00.901952	2017-01-05 09:25:28.499712	1	1	51NtGmh-uFL.jpg	image/jpeg	42830	2017-01-02 06:48:50.101743	\N	\N	\N	\N	https://www.amazon.com/99-Minute-Millionaire-Simplest-Investing-ebook/dp/B01K9ISOH8/ref=sr_1_1?ie=UTF8&qid=1483608317&sr=8-1&keywords=99+Minute+Millionaire%3A+The+Simplest+and+Easiest+Book+Ever+on+Getting+Started+Investing+and+Becoming+Rock+Star+Rich
+5	The New Rules of Marketing and PR: How to Use Social Media, Online Video, Mobile Applications, Blogs, News Releases, and Viral Marketing!	This is the fifth edition of the pioneering guide to the future of marketing. The New Rules of Marketing & PR is an international bestseller with more than 350,000 copies sold in over twenty-five languages. It offers a step-by-step action plan for harnessing the power of modern marketing and PR to directly communicate with buyers, raise visibility, and increase sales. This practical guide is written for marketing professionals, PR professionals, and entrepreneurs who want to grow their businesses and create success. Learn how companies, nonprofits, and organizations of all sizes can leverage web-based content to get timely, relevant information to eager, responsive buyers for a fraction of the cost of big-budget campaigns.	David Meerman Scott	2016-12-29 06:15:25.341525	2017-01-05 09:25:54.360922	1	15	51UfmXGxXDL.jpg	image/jpeg	57015	2017-01-02 06:49:22.726729	\N	\N	\N	\N	https://www.amazon.com/New-Rules-Marketing-PR-Applications/dp/1119070481/ref=sr_1_1?ie=UTF8&qid=1483608343&sr=8-1&keywords=The+New+Rules+of+Marketing+and+PR%3A+How+to+Use+Social+Media%2C+Online+Video%2C+Mobile+Applications%2C+Blogs%2C+News+Releases%2C+and+Viral+Marketing%21
+24	DEAD GONE a gripping crime thriller full of twists	A woman’s body is found floating in a sultry Florida mangrove. She has no ID and there is no indication of cause of death.  Who is she?   Who killed her?  Everyone has dark secrets that will be revealed.  Rookie detective Tom Lange couldn’t have landed a more difficult first case. The only thing he has to go on is the woman’s butterfly tattoo. His boss, Lauren Blythe, piles the pressure on, and the medical examiner won’t tell him what he needs to know.  Meanwhile Tom’s neighbour Alicia has an abusive boyfriend who Tom clashes with in a way that will have far-reaching consequences.	T.J. BREARTON 	2017-01-06 05:33:18.888749	2017-01-06 05:33:18.888749	1	3	51CMZpfD03L.jpg	image/jpeg	38556	2017-01-06 05:33:18.743441	\N	\N	\N	\N	https://www.amazon.com/DEAD-gripping-crime-thriller-twists-ebook/dp/B01MY2FQSB/ref=sr_1_62?s=digital-text&ie=UTF8&qid=1483680634&sr=1-62&keywords=Drama
+8	The Intelligent Investor: The Definitive Book on Value Investing. 	This classic text is annotated to update Graham's timeless wisdom for today's market conditions... The greatest investment advisor of the twentieth century, Benjamin Graham, taught and inspired people worldwide. Graham's philosophy of "value investing" -- which shields investors from substantial error and teaches them to develop long-term strategies -- has made The Intelligent Investor the stock market bible ever since its original publication in 1949.  Over the years, market developments have proven the wisdom of Graham's strategies. While preserving the integrity of Graham's original text, this revised edition includes updated commentary by noted financial journalist Jason Zweig, whose perspective incorporates the realities of today's market, draws parallels between Graham's examples and today's financial headlines, and gives readers a more thorough understanding of how to apply Graham's principles.  Vital and indispensable, this HarperBusiness Essentials edition of The Intelligent Investor is the most important book you will ever read on how to reach your financial goals.	Benjamin Graham	2016-12-31 03:20:45.754719	2017-01-05 08:14:44.235373	1	1	41lNILAEAfL._SX336_BO1_204_203_200_.jpg	image/jpeg	29513	2017-01-02 06:47:45.544362	\N	\N	\N	\N	https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661/ref=sr_1_1?ie=UTF8&qid=1483604067&sr=8-1&keywords=the+intelligent+investor
+13	The Personal MBA: Master the Art of Business	Getting an MBA is an expensive choice-one almost impossible to justify regardless of the state of the economy. Even the elite schools like Harvard and Wharton offer outdated, assembly-line programs that teach you more about PowerPoint presentations and unnecessary financial models than what it takes to run a real business. You can get better results (and save hundreds of thousands of dollars) by skipping business school altogether.   Josh Kaufman founded PersonalMBA.com as an alternative to the business school boondoggle. His blog has introduced hundreds of thousands of readers to the best business books and most powerful business concepts of all time. Now, he shares the essentials of entrepreneurship, marketing, sales, negotiation, operations, productivity, systems design, and much more, in one comprehensive volume. The Personal MBA distills the most valuable business lessons into simple, memorable mental models that can be applied to real-world challenges.	Josh Kaufman	2017-01-01 23:26:56.188847	2017-01-05 08:41:10.896559	1	17	41Ce3nZb0CL.jpg	image/jpeg	31723	2017-01-01 23:31:51.233597	41Ce3nZb0CL.jpg	image/jpeg	31723	2017-01-01 23:26:56.056933	https://www.amazon.com/Personal-MBA-Master-Art-Business/dp/1591845572/ref=sr_1_1?ie=UTF8&qid=1483605656&sr=8-1&keywords=The+Personal+MBA%3A+Master+the+Art+of+Business
+21	Zero to One: Notes on Startups, or How to Build the Future	The great secret of our time is that there are still uncharted frontiers to explore and new inventions to create. In Zero to One, legendary entrepreneur and investor Peter Thiel shows how we can find singular ways to create those new things.   Thiel begins with the contrarian premise that we live in an age of technological stagnation, even if we’re too distracted by shiny mobile devices to notice. Information technology has improved rapidly, but there is no reason why progress should be limited to computers or Silicon Valley. Progress can be achieved in any industry or area of business. It comes from the most important skill that every leader must master: learning to think for yourself.  Doing what someone else already knows how to do takes the world from 1 to n, adding more of something familiar. But when you do something new, you go from 0 to 1. The next Bill Gates will not build an operating system. The next Larry Page or Sergey Brin won’t make a search engine. Tomorrow’s champions will not win by competing ruthlessly in today’s marketplace. They will escape competition altogether, because their businesses will be unique.   Zero to One presents at once an optimistic view of the future of progress in America and a new way of thinking about innovation: it starts by learning to ask the questions that lead you to find value in unexpected places.	Peter Thiel	2017-01-06 04:29:41.98735	2017-01-06 04:30:18.725575	3	17	41PZRSHF-NL.jpg	image/jpeg	25637	2017-01-06 04:30:18.559818	\N	\N	\N	\N	https://www.amazon.com/Zero-One-Notes-Startups-Future-ebook/dp/B00J6YBOFQ/ref=s9__nn_ebooks_gw_g351_i5_r?_encoding=UTF8&fpl=fresh&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=&pf_rd_r=RWG2EX0JCFQPX6NF9A7W&pf_rd_t=36701&pf_rd_p=a6aaf593-1ba4-4f4e-bdcc-0febe090b8ed&pf_rd_i=desktop
+22	And Then She Was GONE: A riveting new suspense novel that keeps you guessing until the end	What’s done in the dark will be brought to the light…  The silhouette stood at the edge of the woods like a spider watching a fly enter its carefully crafted web. Only a few more steps and she’d be within its grasp.  Stacy Shaw has her whole life ahead of her. New job, new house and now a baby on the way—everything she’s ever hoped for is finally coming true. But on a warm summer night on the way home from work, she vanishes. The police race to find her, but the clues don’t add up. Conflicting facts emerge as her story twists and turns, sending the trail spiraling in all directions.   A hometown hero with a heart of gold, Jack Stratton was raised in a whorehouse by his prostitute mother. Jack seemed destined to become another statistic, but now his life has taken a turn for the better. Determined to escape his past, he's headed for a career in law enforcement. When his foster mother asks him to look into the girl’s disappearance, Jack quickly gets drawn into a baffling mystery. As Jack digs deeper, everyone becomes a suspect—including himself. Caught between the criminals and the cops, can Jack discover the truth in time to save the girl? Or will he become the next victim?	Christopher Greyson	2017-01-06 04:33:01.380608	2017-01-06 04:33:01.380608	1	5	51A2-l0F3QL.jpg	image/jpeg	54081	2017-01-06 04:33:01.232411	\N	\N	\N	\N	https://www.amazon.com/Then-She-Was-GONE-riveting-ebook/dp/B01K227MX8/ref=sr_1_13?s=digital-text&ie=UTF8&qid=1483677049&sr=1-13&keywords=romance
+20	How to Quit Your Job with Passive Income: The Ultimate Beginners Guide to Wealth and Riches with 12 Proven Businesses You Can Start Today	Quit Your Job and Live the Life of Your Dreams  What if you could quit your job tomorrow and do whatever you want with your life? What if you could make enough money each month to live on without having a job working for someone else?  Amazon's bestselling author, Dustin Heiner shares his experience quitting his job and designing his life the way he wants to live it. Based on years of research and application of the proven passive income ideas and businesses into his life, he has successfully done what others dream. At age 37, he quit his job and joined other entrepreneurs like Mark Cuban, Donald Trump, Robert Kiyosaki, Tim Farris, James Altucher, Elon Musk, John Lee Dumas, Pat Flynn, and Grant Cardone, Dustin Heiner answers the question, what is the secret to never working a job again.	Dustin Heiner	2017-01-06 04:18:30.056518	2017-01-06 04:18:30.056518	1	17	51CcEE9HY4L.jpg	image/jpeg	40291	2017-01-06 04:18:29.881817	\N	\N	\N	\N	https://www.amazon.com/dp/B01MQDKX0C?psc=1
+23	Everything for Her	USA TODAY bestselling author Alexa Riley's first full-length novel shows just what happens when a strong, possessive man finds the woman of his dreams   I'll never forget the way she looked, so confident and sure of herself. I watched her from a distance. She wasn't ready for me yet. I didn't approach her and I didn't disturb her, but I never once took my eyes off her.    Mallory Sullivan is ready to start her new life. After graduating at the top of her class, she's landed one of the most coveted internships in the United States. Hard work and determination have gotten her to this moment of living the life she only dreamed of growing up in foster care.   From the start, I knew that she would be my greatest achievement, so the day I let her go, I set down a path for her. A path to me.    She never expected Oz to be the greatest culmination of those dreams. But sometimes fate determines who you fall in love with. Who makes you lose control. Who owns your soul.   And then you realize it wasn't fate at all…   I've wanted to care for and protect her since the first moment I saw her. I've constructed everything in our lives so that at the perfect moment, I could have her, could give her the life she deserves. 	Alexa Riley	2017-01-06 04:35:44.571132	2017-01-06 04:36:02.516968	3	5	51PeT_vTOXL._UY250_.jpg	image/jpeg	16586	2017-01-06 04:36:02.40299	\N	\N	\N	\N	https://www.amazon.com/Everything-Her-Alexa-Riley-ebook/dp/B01K3QKWVW/ref=sr_1_15?s=digital-text&ie=UTF8&qid=1483677049&sr=1-15&keywords=romance
+25	Extinct 	Channel Two predicted a blanket of snow for Thanksgiving weekend--unusual, but not alarming for the little Maine island. What comes is a blinding blizzard, and a mass disappearance of nearly every person Robby Pierce knows. He and his family flee, trying to escape the snow and the invisible forces stealing people right from the street. *** Join the mailing list at http://www.ikehamill.com to receive Ike's next book free. *** Miles away, Brad Jenkins battles the same storm. Alone, he attempts to survive as snow envelops his house. When the storm breaks, Brad makes his way south to where the snow ends and the world lies empty. Join Brad, Robby, and the other survivors as they fight to find the truth about the apocalypse and discover how to live in their new world.	Ike Hamill	2017-01-06 05:35:48.410556	2017-01-06 05:36:03.916027	1	7	51j51MOkxVL.jpg	image/jpeg	52138	2017-01-06 05:36:03.773761	\N	\N	\N	\N	https://www.amazon.com/Extinct-Ike-Hamill-ebook/dp/B00D3A97IU/ref=sr_1_21?s=digital-text&ie=UTF8&qid=1483680888&sr=1-21&keywords=Horror
+26	Why Didn't They Teach Me This in School?: 99 Personal Money Management Principles to Live By	Bestselling 5 Star Graduation Gift for both College and High School grads! Why do high schools and colleges require students to take courses in English, math and science, yet have absolutely no requirements for students to learn about personal money management? Why Didn't They Teach Me This in School? 99 Personal Money Management Lessons to Live By was initially developed by the author to pass on to his five children as they entered adulthood. As it developed, the author realized that personal money management skills were rarely taught in high schools, colleges and even in MBA programs. Unfortunately, books on the subject tend to be complicated, lengthy reads. The book includes eight important lessons focusing on 99 principles that will quickly and memorably enhance any individual's money management acumen. Unlike many of the personal money management books out there, this book is a quick, easily digested read that focuses more on the qualitative side than the quantitative side of personal money management. The principles are not from a text book. Rather, they are practical principles learned by the author as he navigated through his financial life. Many are unorthodox in order to be memorable and provoke deeper thought by the reader. Not only an excellent graduation gift for high school and college students but also a great read for any adult! ALSO AVAILABLE IN SPANISH - "POR QUE NO ME ENSENARON ESTO EN LA ESCUELA?"	Cary Siegel 	2017-01-06 05:38:27.436029	2017-01-06 05:38:27.436029	1	16	518nHhI9tzL._SX331_BO1_204_203_200_.jpg	image/jpeg	36146	2017-01-06 05:38:27.295117	\N	\N	\N	\N	https://www.amazon.com/Didnt-They-Teach-This-School/dp/1481027565/ref=mt_paperback?_encoding=UTF8&me=
+27	The Richest Man in Babylon 	Beloved by millions, this timeless classic holds the key to all you desire and everything you wish to accomplish. This is the book that reveals the secret to personal wealth. The Richest Man in Babylon is a book by George Samuel Clason which dispenses financial advice through a collection of parables set in ancient Babylon. Through their experiences in business and managing household finance, the characters in the parables learn simple lessons in financial wisdom. Originally a series of separate informational pamphlets distributed by banks and insurance companies, the pamphlets were bound together and published in book form in 1926.	George S. Clason	2017-01-06 05:41:45.199849	2017-01-06 05:41:45.199849	1	16	41JGlyCt5NL.jpg	image/jpeg	32614	2017-01-06 05:41:45.067687	\N	\N	\N	\N	https://www.amazon.com/Richest-Man-Babylon-George-Clason-ebook/dp/B00OJNA536/ref=sr_1_11?s=digital-text&ie=UTF8&qid=1483681010&sr=1-11&keywords=Finance
+34	Business Adventures: Twelve Classic Tales from the World of Wall Street	What do the $350 million Ford Motor Company disaster known as the Edsel, the fast and incredible rise of Xerox, and the unbelievable scandals at General Electric and Texas Gulf Sulphur have in common? Each is an example of how an iconic company was defined by a particular moment of fame or notoriety; these notable and fascinating accounts are as relevant today to understanding the intricacies of corporate life as they were when the events happened.  Stories about Wall Street are infused with drama and adventure and reveal the machinations and volatile nature of the world of finance. Longtime New Yorker contributor John Brooks’s insightful reportage is so full of personality and critical detail that whether he is looking at the astounding market crash of 1962, the collapse of a well-known brokerage firm, or the bold attempt by American bankers to save the British pound, one gets the sense that history repeats itself.  Five additional stories on equally fascinating subjects round out this wonderful collection that will both entertain and inform readers . . . Business Adventures is truly financial journalism at its liveliest and best.	John Brooks	2017-01-06 08:17:56.65025	2017-01-06 08:18:49.195943	1	17	51ZXbgG0YJL._SX326_BO1_204_203_200_.jpg	image/jpeg	41468	2017-01-06 08:17:56.491079	\N	\N	\N	\N	https://www.amazon.com/Business-Adventures-Twelve-Classic-Street/dp/1497644895/ref=s9_simh_gw_g14_i7_r?_encoding=UTF8&fpl=fresh&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=&pf_rd_r=EDJ54WTNG7187GZ52Q06&pf_rd_t=36701&pf_rd_p=a6aaf593-1ba4-4f4e-bdcc-0febe090b8ed&pf_rd_i=desktop
+\.
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jimvickery
+--
+
+SELECT pg_catalog.setval('books_id_seq', 35, true);
+
+
+--
+-- Data for Name: genres; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY genres (id, name, created_at, updated_at) FROM stdin;
+1	Investing	2016-12-30 23:50:00	2016-12-30 23:50:00
+2	Suspense	2016-12-30 23:50:00	2016-12-30 23:50:00
+3	Drama	2016-12-26 23:21:00	2016-12-26 23:21:00
+4	Action and Adventure	2016-12-26 23:21:00	2016-12-26 23:21:00
+5	Romance	2016-12-30 23:50:00	2016-12-30 23:50:00
+6	Mystery	2016-12-30 23:50:00	2016-12-30 23:50:00
+7	Horror	2016-12-26 23:21:00	2016-12-26 23:21:00
+8	Self help	2016-12-26 23:21:00	2016-12-26 23:21:00
+9	Health	2016-12-26 23:21:00	2016-12-26 23:21:00
+10	Travel	2016-12-26 23:21:00	2016-12-26 23:21:00
+11	Childrens	2016-12-26 23:32:00	2016-12-26 23:32:00
+12	Science	2016-12-26 23:32:00	2016-12-26 23:32:00
+13	Biographies	2016-12-26 23:32:00	2016-12-26 23:32:00
+15	Marketing	2016-12-26 23:32:00	2016-12-26 23:32:00
+16	Finance	2016-12-26 23:32:00	2016-12-26 23:32:00
+17	Business	2016-12-26 23:32:00	2016-12-26 23:32:00
+18	Relationships	2016-12-26 23:32:00	2016-12-26 23:32:00
+14	_All Books	2017-01-03 22:41:27.039133	2017-01-03 22:41:27.039133
+\.
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jimvickery
+--
+
+SELECT pg_catalog.setval('genres_id_seq', 16, true);
+
+
+--
+-- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY reviews (id, rating, comment, created_at, updated_at, user_id, book_id) FROM stdin;
+10	5	Best Book Ever!!!	2017-01-03 05:01:00.285896	2017-01-03 05:01:00.285896	2	8
+7	5	Great Book for investing. It covers everything you can imagine. 	2017-01-02 22:36:18.640531	2017-01-03 05:29:29.006199	2	8
+12	4	Best Public relations book around, Very helpful.	2017-01-03 06:41:31.87656	2017-01-03 06:41:31.87656	2	5
+13	5	Great book about index investing and mutual funds.	2017-01-03 07:03:21.477918	2017-01-03 07:03:21.477918	2	9
+14	5	Good Book	2017-01-04 03:37:02.002049	2017-01-04 03:37:02.002049	2	7
+15	4	Best book on real estate buying to invest and make money. 	2017-01-05 03:33:48.667819	2017-01-05 03:33:48.667819	2	11
+11	5	Excellent book on renting out properties for income!!!	2017-01-03 06:13:04.863698	2017-01-05 03:34:03.702407	2	11
+8	5	Good Book.	2017-01-02 22:44:13.915328	2017-01-05 03:46:02.996937	2	13
+5	5	Great Book for Business World	2017-01-02 22:17:48.043339	2017-01-05 05:27:56.662328	2	6
+16	5	Good information on getting information on how to run a business in the most efficient way. 	2017-01-05 05:37:12.96732	2017-01-05 05:38:23.962507	1	13
+17	5	Covers several areas of passive income at least partially. Good Book	2017-01-06 04:19:26.770395	2017-01-06 04:19:26.770395	1	20
+18	5	Great examples using metaphors to describe ways to build wealth.	2017-01-06 05:42:46.743941	2017-01-06 05:42:46.743941	1	27
+19	5	This is what should be taught in school. 	2017-01-06 09:57:09.309644	2017-01-06 09:57:09.309644	1	26
+\.
+
+
+--
+-- Name: reviews_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jimvickery
+--
+
+SELECT pg_catalog.setval('reviews_id_seq', 19, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY schema_migrations (version) FROM stdin;
+0
+20161228065624
+20161229223456
+20161230195537
+20161231040630
+20161231041133
+20170101224508
+20170101232228
+20170102081842
+20170102083800
+20170102084149
+20170105075325
+20170107220844
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: jimvickery
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, confirmation_token, confirmed_at, confirmation_sent_at) FROM stdin;
+2	jimrv8@aol.com	$2a$11$EgX3NRC1nXc57K.pll3frO5ZHzVu7hvcAzzg4wZU/tTn20Bj2i62y	\N	\N	\N	19	2017-01-05 09:26:23.004328	2017-01-05 09:23:47.350928	::1	::1	2016-12-30 20:27:54.165528	2017-01-05 09:26:23.006505	\N	2017-01-07 22:10:48.784678	\N
+3	jimanderson@gmail.com	$2a$11$UxI7R9v7OJtIYOQU8RdKZuYQMmZFYbQ9Zw.p5GlegWD0E0S6L.yem	\N	\N	\N	3	2017-01-05 09:28:12.93035	2017-01-02 06:52:08.811466	::1	::1	2016-12-31 03:39:38.953838	2017-01-05 09:28:12.932765	\N	2017-01-07 22:10:48.784678	\N
+1	jimrv8@yahoo.com	$2a$11$9ki83Wyzl1O.nw5Wh0KusOF1OKTJWJ5pfeXMXUDekKGOozviPVHxe	\N	\N	\N	28	2017-01-06 07:46:54.551954	2017-01-06 04:15:47.487813	::1	::1	2016-12-30 05:39:40.412783	2017-01-06 07:46:54.554261	\N	2017-01-07 22:10:48.784678	\N
+4	tony3434wwe23422@gmail.com	$2a$11$DXbsrRXQuvUBsNHfwBaqrOO8iimII/PsJsTjRGEgkypEmSVq6x5wu	\N	\N	\N	1	2017-01-07 22:06:56.292105	2017-01-07 22:06:56.292105	::1	::1	2017-01-07 22:06:56.269088	2017-01-07 22:06:56.293227	\N	2017-01-07 22:10:48.784678	\N
+5	info@investprofits.com	$2a$11$FJCQzGqqhTrEFmuwEqDJ7OPCgG.nsBecYYb8m5ZODDjUHPvEK3kxS	\N	\N	\N	0	\N	\N	\N	\N	2017-01-07 22:20:39.496404	2017-01-07 22:20:39.496404	VfyzowBJDw_xxxX8A4Ka	\N	2017-01-07 22:20:39.496554
+6	admin@investprofits.com	$2a$11$kGaD6bwxVsYd55hgC9PX6u3YWN3zBCgk8fTZDKQVHIhZkvo/431jW	\N	\N	\N	0	\N	\N	\N	\N	2017-01-07 22:23:32.141758	2017-01-07 22:23:32.141758	sULZ5Dt3Dj8SpX_1gxq9	\N	2017-01-07 22:23:32.141926
+7	jimrv8@icloud.com	$2a$11$KlZx4jSbyBtDlmfFfiGSSeARbwPqIWZ1IqgrL8m9C8E.cNcqFsmIq	\N	\N	\N	0	\N	\N	\N	\N	2017-01-07 22:28:31.045971	2017-01-07 22:28:31.045971	3EpMYbzrzCsaJd43FKxP	\N	2017-01-07 22:28:31.046106
+8	jimrv844@aol.com	$2a$11$s764o01yenK/LdX008jKSO7JNpiRrojoc9AxOhJ.fgOdSQYtoYwlq	\N	\N	\N	0	\N	\N	\N	\N	2017-01-07 22:41:03.87809	2017-01-07 22:41:03.87809	6agkzYmmzX5eJHE9qMAA	\N	2017-01-07 22:41:03.878232
+9	jimrv84e34@aol.com	$2a$11$JCKbt8vkNxM2nMHEJSCziOcm4jFJeL5c60EWDnt/7EXkWFS2lixIu	\N	\N	\N	0	\N	\N	\N	\N	2017-01-07 22:45:59.89381	2017-01-07 22:45:59.89381	s1ekz21CxV4n5zQ3BTWf	\N	2017-01-07 22:45:59.89391
+10	jimrv84sdfsde34@aol.com	$2a$11$a7YIXcThlCytktzE.5OD/emrN7i7.xEhizTH2xZ38mMGtp9XpoZjy	\N	\N	\N	1	2017-01-07 22:49:30.84852	2017-01-07 22:49:30.84852	::1	::1	2017-01-07 22:49:30.844272	2017-01-07 22:49:30.849763	\N	\N	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: jimvickery
+--
+
+SELECT pg_catalog.setval('users_id_seq', 10, true);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY books
+    ADD CONSTRAINT books_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: genres genres_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY genres
+    ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY reviews
+    ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: jimvickery
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: jimvickery
+--
+
+CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: jimvickery
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: jimvickery
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
