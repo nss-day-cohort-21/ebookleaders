@@ -1,0 +1,31 @@
+<% if params[:genre] !=  "_All Books" %>
+<h1 class = "currentGenre"> <%= params[:genre] %></h1>
+	<% else %>
+		<br>
+		<br>
+	<% end %>
+<% if @books.count == 0 %>
+	<h1>There are no books in this category. </h1><br>	
+	<h2>Have a Book to Promote?</h2>
+	<h3>Get Book promotions via Amazon and Twitter by <%= link_to "listing your book here", new_book_path %>. More exposure, More Visibility, More Sales. It's Free.</h3> 
+<% end %>
+
+	<div class = "row">
+
+		<% @books.each do |book| %>
+			<div class="col-md-3">
+			<a href="/books/<%= book.id %>">
+				<%= image_tag book.book_imgage.url(:book_index), class: "booksize" %>
+			</a>
+
+			</div>
+		<% end %>
+
+
+
+	</div>
+
+
+
+
+
