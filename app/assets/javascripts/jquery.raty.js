@@ -8,7 +8,7 @@
  * @version : 2.7.1
  *
  */
-<%= asset_path "icon-name" %>
+
 ;
 (function($) {
   'use strict';
