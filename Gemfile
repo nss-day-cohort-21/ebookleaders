@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 1.6' 
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
@@ -17,9 +17,7 @@ group :production do
   gem 'pg', '~> 0.18'
 end
 
-group :development do
-  gem 'pg', '~> 0.18'
-end
+
 
 
 # Use Puma as the app server
