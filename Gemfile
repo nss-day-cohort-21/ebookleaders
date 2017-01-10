@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-v1'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
