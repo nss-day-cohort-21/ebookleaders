@@ -17,7 +17,9 @@ group :production do
   gem 'pg', '~> 0.18'
 end
 
-
+group :development do
+  gem 'pg', '~> 0.18'
+end
 
 
 # Use Puma as the app server
