@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-gem 'aws-sdk', '~> 1.6' 
+gem 'aws-sdk', '~> 2'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
@@ -14,10 +14,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
 group :production do
-  gem 'pg', '~> 0.18'
-end
-
-group :development do
   gem 'pg', '~> 0.18'
 end
 
