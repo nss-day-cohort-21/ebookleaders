@@ -4,7 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 
 #add this line to get raty stars images to show
-Rails.application.config.assets.precompile += %w( ratyrate.js )
+#Rails.application.config.assets.precompile += %w( ratyrate.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
