@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 gem 'rmagick'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
