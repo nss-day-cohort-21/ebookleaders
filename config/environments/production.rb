@@ -2,16 +2,16 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
 #paperclip S3   add Jan 10 to get images to post; may not be needed though. problem solved with AWS permissions
-config.paperclip_def  aults = {
-    storage: :s3,
-    s3_region: ENV["AWS_REGION"],
-    s3_credentials: {
-      s3_host_name: ENV["AWS_HOST_NAME"],
-      bucket: ENV["AWS_BUCKET_NAME"],
-      access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-      secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
-      }
-    } 
+# config.paperclip_def  aults = {
+#     storage: :s3,
+#     s3_region: ENV["AWS_REGION"],
+#     s3_credentials: {
+#       s3_host_name: ENV["AWS_HOST_NAME"],
+#       bucket: ENV["AWS_BUCKET_NAME"],
+#       access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+#       secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
+#       }
+#     } 
 
 
 
