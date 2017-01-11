@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-#paperclip S3 
-config.paperclip_defaults = {
+#paperclip S3   add Jan 10 to get images to post; may not be needed though. problem solved with AWS permissions
+config.paperclip_def  aults = {
     storage: :s3,
     s3_region: ENV["AWS_REGION"],
     s3_credentials: {
