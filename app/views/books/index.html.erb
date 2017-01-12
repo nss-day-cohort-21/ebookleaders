@@ -1,3 +1,12 @@
+<h3>Is your book on Amazon? 
+	 <% if user_signed_in? %>
+	 	<%= link_to " Add your book here ", 
+	 	 new_book_path %>
+	 <% else %>
+	 	<%= link_to " Add your book here ", 
+		  new_user_registration_path %>
+	 <% end %>
+ and get more exposure.</h3> 
 <% if params[:genre] !=  "_All Books" %>
 <h1 class = "currentGenre"> <%= params[:genre] %></h1>
 	<% else %>
