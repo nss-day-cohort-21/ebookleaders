@@ -1,4 +1,4 @@
-<h3>Is your book on Amazon? 
+<h4 class = "book-submit-promo">Is your book on Amazon? 
 	 <% if user_signed_in? %>
 	 	<%= link_to " Add your book here ", 
 	 	 new_book_path %>
@@ -6,7 +6,7 @@
 	 	<%= link_to " Add your book here ", 
 		  new_user_registration_path %>
 	 <% end %>
- and get more exposure.</h3> 
+ and get more exposure. It's free.</h4> 
 <% if params[:genre] !=  "_All Books" %>
 <h1 class = "currentGenre"> <%= params[:genre] %></h1>
 	<% else %>
@@ -16,7 +16,7 @@
 <% if @books.count == 0 %>
 	<h1>There are no books in this category. </h1><br>	
 	<h2>Have a Book to Promote?</h2>
-	<h3>Get Book promotions via Amazon and Twitter by <%= link_to "listing your book here", new_book_path %>. More exposure, More Visibility, More Sales. It's Free.</h3> 
+	<h3>Get Book promotions via azon and Twitter by <%= link_to "listing your book here", new_book_path %>. More exposure, More Visibility, More Sales. It's Free.</h3> 
 <% end %>
 <!-- <h1 align = "center"> Discover New Titles </h1>
 <h2 align = "center">Great Stories. Unique Perspectives. </h2>
