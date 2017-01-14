@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
 	before_action :authenticate_user!, only:[:new, :edit]
 	
 	def show
+		@review = Review.find(params[:id])
 	end
 	
 

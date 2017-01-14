@@ -1,3 +1,4 @@
+<h4><b><%= review.user.name %></b></h4>
 <div class = "review">
 	<div class = "review-rating" data-score = "<%= review.rating %>"></div>
 		<p class = "review-comment"><%= review.comment %></p>
@@ -5,8 +6,8 @@
 				<% if review.user_id == current_user.id %>
 		<div>
 
-
-			<div class = "links btn-group">
+		
+			<div class = "links btn-group">		
 				<%= link_to "Edit Reveiw", edit_book_review_path(review.book, review), class: "btn btn-custom" %>
 				<div>
 				<%= link_to "Delete Review", book_review_path(review.book, review), method: :delete, data: {confirm: "Are you sure?"} %>
