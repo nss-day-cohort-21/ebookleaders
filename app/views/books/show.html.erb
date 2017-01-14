@@ -26,7 +26,11 @@
 			<div><p><p><p><p></div>
 			  
 			<div class = "bookInfo">
-			<h4>Amazon Link:   
+			
+
+
+
+			<h4><b>Amazon Link:</b>   
 			<% if @book.amazon_link.present? %>
 
 			<% s = @book.amazon_link %>
@@ -44,6 +48,20 @@
 
 			<%= link_to  "  Buy this book on Amazon", bookUrl , target: :_blank %></h2>
 			<% end %>
+
+
+			<% if @book.ebookprice.present? %>
+				<h4><b>eBook Price: </b>
+				<%=   @book.ebookprice %>
+				&nbsp;&nbsp;&nbsp;
+			<% end %>
+
+
+			<% if @book.bookprice.present? %>
+			<b>Print Price</b>
+				<%=  @book.bookprice %></h4>
+			<% end %>
+
 			</div>
 	</div>
 

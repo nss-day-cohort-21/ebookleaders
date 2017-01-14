@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114040951) do
+ActiveRecord::Schema.define(version: 20170114231641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170114040951) do
     t.integer  "book_image_file_size"
     t.datetime "book_image_updated_at"
     t.string   "amazon_link"
+    t.float    "ebookprice"
+    t.float    "bookprice"
   end
 
   create_table "genres", force: :cascade do |t|
