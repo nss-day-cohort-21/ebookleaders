@@ -25,11 +25,7 @@
 			</div>
 			<div><p><p><p><p></div>
 			  
-			<div class = "bookInfo">
-			
-
-
-
+			<div class =  "bookInfo">
 			<h4><b>Amazon Link:</b>   
 			<% if @book.amazon_link.present? %>
 
@@ -51,15 +47,19 @@
 
 
 			<% if @book.ebookprice.present? %>
-				<h4><b>eBook Price: </b>
-				<%=   @book.ebookprice %>
+				<h4><b>Kindle eBook: </b>
+					<% if @book.ebookprice < 0.001 %>
+						<%=   ' 0.00' %>
+					<% else %>
+						<%= " $#{@book.ebookprice}"  %>
+					<% end %>
 				&nbsp;&nbsp;&nbsp;
 			<% end %>
 
 
 			<% if @book.bookprice.present? %>
-			<b>Print Price</b>
-				<%=  @book.bookprice %></h4>
+			<b>Print: </b>
+				<%= " $#{@book.bookprice}"  %></h4>
 			<% end %>
 
 			</div>
