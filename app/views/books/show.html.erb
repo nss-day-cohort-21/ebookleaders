@@ -25,60 +25,76 @@
 			</div>
 			<div><p><p><p><p></div>
 			  
-			<div class =  "bookInfo">
-			<h4><b>Amazon Link:</b>   
-			<% if @book.amazon_link.present? %>
+				<div class =  "bookInfo">
+				<h4><b>Amazon Link:</b>   
+				<% if @book.amazon_link.present? %>
 
-			<% s = @book.amazon_link %>
+				<% s = @book.amazon_link %>
 
-			<% s1a = s.split('dp/')[-1] %>
-			<% s1 = s1a.split('?psc=1')[-1] %>
-			<% s2 = s1.split("/")[0] %>
+				<% s1a = s.split('dp/')[-1] %>
+				<% s1 = s1a.split('?psc=1')[-1] %>
+				<% s2 = s1.split("/")[0] %>
 
+				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+				
+				<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></h2>
+				<% end %>
+
+				<% if @book.ebookprice.present? %>
+					<h4><b>Kindle eBook: </b>
+						<% if @book.ebookprice < 0.001 %>
+							<%=   ' 0.00' %>
+						<% else %>
+							<%= " $#{@book.ebookprice}"  %>
+						<% end %>
+					&nbsp;&nbsp;&nbsp;
+				<% end %>
+
+
+				<% if @book.bookprice.present? %>
+				<b>Print: </b>
+					<%= " $#{@book.bookprice}"  %></h4>
+				<% end %>
+
+				</div>
 
 			
 
-			<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
-			
-
-
-			<%= link_to  "  Buy this book on Amazon", bookUrl , target: :_blank %></h2>
-			<% end %>
-
-
-			<% if @book.ebookprice.present? %>
-				<h4><b>Kindle eBook: </b>
-					<% if @book.ebookprice < 0.001 %>
-						<%=   ' 0.00' %>
-					<% else %>
-						<%= " $#{@book.ebookprice}"  %>
-					<% end %>
-				&nbsp;&nbsp;&nbsp;
-			<% end %>
-
-
-			<% if @book.bookprice.present? %>
-			<b>Print: </b>
-				<%= " $#{@book.bookprice}"  %></h4>
-			<% end %>
-
-			</div>
-	</div>
 
 	</div>
 
-
+	</div>
 
 <div class = "row">
 			<div class = "col-md-4">
 
+				<!-- <h4> Add Your <%= link_to "Bio", pages_path %> </h4>
+				<br> -->
+
+				
+					
+			  			
+			  			<div class =  "bookInfo">
+			  				<div class = "links btn-group">
+			  				<h3> Reviewer or Author? </br>
+			  					 <%= link_to "Add Your Book", new_book_path, class: "btn btn-custom" %> &nbsp; &nbsp;
+			  					  <%= link_to "Add Your Bio", edit_user_registration_path, class: "btn btn-custom" %> </h3></div>
+			  			</div>
+
+
+			  			
+			  			
+			  		
+
 				<div class ="reviews"> 
 
 
-					<h1>Reviews</h1>
-					
 
+					<h1>Reviews</h1>
 					<%= render @book.reviews %>
+					
+					
+					
 					<br/>
 					<div class = "links btn-group">
 						<%= link_to "Add Reveiw", new_book_review_path(@book), class: "btn btn-custom" %> 

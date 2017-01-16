@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-	devise_for :users , controllers: { confirmations: 'confirmations' }
+	devise_for :users , controllers: {confirmations: 'confirmations'}
 	resources :books do
 		resources :reviews
 	end	
+resources :pages
+# get '/bio' => 'pages#bio'
+# get '/show' => 'pages#show'
 root 'books#index'
 
 end
