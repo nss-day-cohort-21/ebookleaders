@@ -43,7 +43,7 @@
 				<% if @book.ebookprice.present? %>
 					<h4><b>Kindle eBook: </b>
 						<% if @book.ebookprice < 0.001 %>
-							<%=   ' 0.00' %>
+							<span class = "red" ><%=   '$ 0.00' %></span>
 						<% else %>
 							<%= " $#{@book.ebookprice}"  %>
 						<% end %>
@@ -55,7 +55,7 @@
 				<b>Print: </b>
 					<%= " $#{@book.bookprice}"  %></h4>
 				<% end %>
-
+			
 				</div>
 
 			
