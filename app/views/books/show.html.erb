@@ -43,9 +43,9 @@
 				<% if @book.ebookprice.present? %>
 					<h4><b>Kindle eBook: </b>
 						<% if @book.ebookprice < 0.001 %>
-							<span class = "red" ><%=   '$ 0.00' %></span>
+							<span class = "red" ><%= number_to_currency " #{@book.ebookprice}"  %></span>
 						<% else %>
-							<%= " $#{@book.ebookprice}"  %>
+							<%= number_to_currency " #{@book.ebookprice}"  %>
 						<% end %>
 					&nbsp;&nbsp;&nbsp;
 				<% end %>
@@ -53,7 +53,7 @@
 
 				<% if @book.bookprice.present? %>
 				<b>Print: </b>
-					<%= " $#{@book.bookprice}"  %></h4>
+					<%= number_to_currency " #{@book.bookprice}"  %></h4>
 				<% end %>
 			
 				</div>

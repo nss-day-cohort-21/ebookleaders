@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-
+		@bio = @user.author_bio
 	end
 
 	
