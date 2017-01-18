@@ -1,7 +1,11 @@
 <% if review.user.author_bio.present? %>
-	<h4><b><%= review.user.name %> </b></h4>
+
+	<h4><b><%= link_to "#{review.user.name}", user_path(review.user_id) %></b></h4> 
+		
+		
 		
 <% else %>
+
 	<h4><b><%= review.user.name %></b></h4>
 
 <% end %>
