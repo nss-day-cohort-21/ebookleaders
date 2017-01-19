@@ -11,7 +11,7 @@
 
 			<% if @book.user.author_bio.present? %>
 				<h3 class = "bookAuthor"><span>From: </span>
-					<%= link_to "#{@book.author}", user_path(@book.user_id) %></h3>
+					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h3>
 					
 
 				<% else %>
@@ -48,6 +48,7 @@
 				<% s2 = s1.split("/")[0] %>
 
 				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+				
 				
 				<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></h2>
 				<% end %>
