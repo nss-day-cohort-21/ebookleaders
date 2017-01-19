@@ -3,10 +3,11 @@
 			
 		<h4><b><%= link_to "#{review.user.name}", user_path(review.user_id) %></b></h4>
 
-<% elsif review.user.reviewer_bio.present? %>
+<% end %>
+
+<% if review.user.reviewer_bio.present? %>
 
 	<h4><b><%= link_to "#{review.user.name}", user_path(review.user_id) %></b></h4> 
-
 		
 <% else %>
 
