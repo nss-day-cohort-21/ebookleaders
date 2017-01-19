@@ -1,19 +1,5 @@
 
-<% if  review.user.author_bio.present? %>
-			
-		<h4><b><%= link_to "#{review.user.name}", user_path(review.user_id) %></b></h4>
 
-<% end %>
-
-<% if review.user.reviewer_bio.present? %>
-
-	<h4><b><%= link_to "#{review.user.name}", user_path(review.user_id) %></b></h4> 
-		
-<% else %>
-
-	<h4><b><%= review.user.name %></b></h4>
-
-<% end %>
 
 <div class = "review">
 	<div class = "review-rating" data-score = "<%= review.rating %>"></div>
