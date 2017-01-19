@@ -1,12 +1,12 @@
 <h4 class = "book-submit-promo">Is your book on Amazon? 
 	 <% if user_signed_in? %>
-	 	<%= link_to " Add your book here ", 
-	 	 new_book_path %>
+	 	<b><%= link_to " Add your Amazon books to eBookLeaders. ", 
+	 	 new_book_path %></b>
 	 <% else %>
-	 	<%= link_to " Add your book here ", 
-		  new_user_registration_path %>
+	 	<b><%= link_to " Add your Amazon books to eBookLeaders. ", 
+		  new_user_registration_path %></b>
 	 <% end %>
- and get more exposure. It's free.</h4> 
+  Get more exposure. It's free.</h4> 
 <% if params[:genre] !=  "_All Books" %>
 <h1 class = "currentGenre"> <%= params[:genre] %></h1>
 	<% else %>
