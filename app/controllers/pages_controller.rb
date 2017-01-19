@@ -1,3 +1,4 @@
+#not being used
 class PagesController < ApplicationController
 	
 	

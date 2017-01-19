@@ -3,16 +3,50 @@
 				
 				
 <h1>Name: <%= @user.name %></h1>
-<h3>Bio:</h3> <h4><%= @user.author_bio %></h4>
+<% if @user.author_bio.present? %>
+
+	<h3>Bio:</h3> <h4><%= @user.author_bio %></h4>
+
+<% else %>
+
+	<h3>Bio:</h3> <h4><%= @user.reviewer_bio %></h4>
+
+<% end %>
+
+</div>
+
+<br>
+<div class =  "bookInfo">
+
+
+<% if @user.books.present? %>
+	<h3>Books by  <%= @user.name %> </h3><br>
+
+	    <div class = "row">
+
+		<% @user.books.each do |book| %>
+			<div class="col-md-2">
+			<a href="/books/<%= book.id %>">
+				<%= image_tag book.book_imgage.url(:book_index), class: "booksizesmaller" %>
+			</a>
+
+			</div>
+		<% end %>
+
+<% end %>
+
 <br>
 <br>
+</div>
 <div class = "links btn-group">
 
 
 <%= link_to 'Back', url_for(:back) %>
-</div>
 
 </div>
+
+<br><br>
+
 
 
 

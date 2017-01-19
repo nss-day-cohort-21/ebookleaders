@@ -17,7 +17,11 @@
     
         <br/>
 
-    <%= f.input :author_bio, autofocus: true , label: "Enter your Biography"%>
+    <%= f.input :author_bio, autofocus: true , label: "Author Biography (leave blank if you are a reviewer)"%>
+
+    <br/>
+
+    <%= f.input :reviewer_bio, autofocus: true , label: "Reviewer Bio (leave blank if you are the author)"%>
      
 
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>

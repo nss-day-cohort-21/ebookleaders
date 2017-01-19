@@ -161,6 +161,13 @@ p.alert, p.notice {
 	@include background-tile;
 }
 
+.booksizesmaller {
+	height: 224px;
+	width: 160px;
+	margin-bottom: 40px;
+	@include background-tile;
+}
+
 .bookdisplaysize {
 	height: 475px;
 	width: 325px;
