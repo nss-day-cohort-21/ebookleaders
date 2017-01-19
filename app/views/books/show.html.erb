@@ -23,16 +23,12 @@
 			<% if 	@book.genre.present? %>
 			<h4>Genre: <%= @book.genre.name %></h4>
 			<% end %>  
-			
-
-			<% if @average_review.present? %>
 			<h2>Average Rating:  </h2>
 			<div class = "average_review_rating" data-score= "<%= @average_review %>"></div> 
 			<% if @book.reviews.count == 1 %>
 			  <% @reviewPlOrSing = 'review' %>
 			 <% else %>
 			 <% @reviewPlOrSing = 'reviews' %>
-			 <% end %>
 			 <% end %>
 
 			<span class = "number-of-reviews">Based on <%= @book.reviews.count  %> <%= @reviewPlOrSing %></span>
