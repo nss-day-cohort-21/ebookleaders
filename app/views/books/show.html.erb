@@ -40,7 +40,7 @@
 				<div class =  "bookInfo">
 				<h4><b>Amazon Link: 
 				<% if @book.amazon_link.present? %>
-					<% if @book.amazon_link.include? "inferno"%>
+					<% if @book.amazon_link.include? "B01NBK250E"%>
 							<% bookUrl = @book.amazon_link %>
 						
 						<% else %>
@@ -53,7 +53,7 @@
 						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 
 						
-						<% end %>
+					<% end %>
 						
 						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
 
