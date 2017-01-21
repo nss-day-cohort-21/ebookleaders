@@ -50,12 +50,11 @@
 				   
 				<% if s2.include?  "https" %>
 					<% bookUrl = @book.amazon_link %>
-				<% end %> 
-
-				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
-
 				
-				 	
+				<% else %>
+					<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+				<% end %> 
 				
 				
 				
