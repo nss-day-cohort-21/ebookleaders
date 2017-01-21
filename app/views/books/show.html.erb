@@ -42,19 +42,22 @@
 				<% if @book.amazon_link.present? %>
 
 				<% s = @book.amazon_link %>
+				<% if @book.amazon_link.include? "mobile_desktop"%>
+					<% bookUrl = @book.amazon_link %>
+				<% else %>
 
 				<% s1a = s.split('dp/')[-1] %>
-				<% s1 = s1a.remove('?psc=1') %>
+				<% s1 = s1a.split('?psc=1')[-1] %>
 				<% s2 = s1.split("/")[0] %>
-				
-				   
-				<% if s2.include?  "https" %>
-					<% bookUrl = @book.amazon_link %>
-				
-				<% else %>
-					<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 
-				<% end %> 
+				
+				
+				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+				<% end %>
+				
+				
+				
 				
 				
 				
