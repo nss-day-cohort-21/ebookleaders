@@ -45,9 +45,10 @@
 
 				<% s1a = s.split('dp/')[-1] %>
 				<% s1 = s1a.split('?psc=1')[-1] %>
-				<% s2 = s1.split("/")[0] %>
+				<% s2 = s1.split('https:')[-1] %>
+				<% s3 = s2.split("/")[0] %>
 
-				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+				<% bookUrl = "http://www.amazon.com/dp/#{s3}/?tag=ebookleaders1-20" %>
 
 				
 				 	
