@@ -49,6 +49,8 @@
 
 				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 				
+				<% bookUrl =  @book.amazon_link %>
+
 				
 				<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
 				<% end %>  
