@@ -49,9 +49,9 @@
 
 				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 
-				<% if bookUrl.include? "ref" %> 
+				
 				 	<% bookUrl = @book.amazon_link %>
-				 <% end %> 
+				
 				
 				
 				<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
