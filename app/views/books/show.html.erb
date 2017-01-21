@@ -51,7 +51,9 @@
 						<% s2 = s1.split("/")[0] %>
 						
 						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
-
+						<!-- Next line is not because one affilite link fails. This deactivates affiliate link for now. -->
+						
+						<% bookUrl = @book.amazon_link %>
 						
 					<% end %>
 						
