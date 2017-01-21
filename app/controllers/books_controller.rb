@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+	
 	before_action :find_book, only:[:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only:[:new, :edit]
 
@@ -75,6 +76,10 @@ end
 
 
 private
+
+	def my_sanitizer
+    params.require(:book).permit(:titleLstring, :details, :author)
+  	end
 	
 	def book_params
 		params.require(:book).permit(:details, :author, :titleLstring, :genre_id, :book_imgage, :amazon_link, :ebookprice, :bookprice)
