@@ -44,14 +44,10 @@
 				<% s = @book.amazon_link %>
 
 				<% s1a = s.split('dp/')[-1] %>
-				<% s1 = s1a.remove('?psc=1') %>
-				<% s2 = s1.split("/")[0] %>
-   
-				<% if s2.include? "https" %>
-					s2 = @book.amazon_link
-				<% end %> 
+				<% s2 = s1a.remove('?psc=1') %>
+				<% s3 = s2.remove('https') %>
 
-				<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+				<% bookUrl = "http://www.amazon.com/dp/#{s3}/?tag=ebookleaders1-20" %>
 
 				
 				 	
