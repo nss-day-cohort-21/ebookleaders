@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
-	
 	before_action :find_book, only:[:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only:[:new, :edit]
-
+	load_and_authorize_resource param_method: :my_sanitizer
+	
 def authorbio
 end
 
@@ -54,10 +54,13 @@ end
 
 
 def edit
+	authorize! :update, @book 
 	@genres = Genre.all.map {|g| [g.name, g.id]}
+
 end
 
 def update
+	authorize! :update, @book 
 	@book.genre_id = params[:genre_id]
 	if @book.update(book_params) 
 		redirect_to book_path(@book)
@@ -70,6 +73,7 @@ end
 
 
 def destroy
+	authorize! :destroy, @book 
 	@book.destroy
 	redirect_to root_path
 end

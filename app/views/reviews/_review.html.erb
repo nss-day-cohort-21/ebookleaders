@@ -23,10 +23,13 @@
 
 		
 			<div class = "links btn-group">		
+				<% if can? :update, review.book %>
 				<%= link_to "Edit Reveiw", edit_book_review_path(review.book, review), class: "btn btn-custom" %>
+				<% end %>
 				<div>
+				<% if can? :destroy, review.book %>
 				<%= link_to "Delete Review", book_review_path(review.book, review), method: :delete, data: {confirm: "Are you sure?"} %>
-					
+				<% end %>	
 				</div>
 		 
 		 	</div>

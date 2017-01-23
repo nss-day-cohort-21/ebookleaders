@@ -1,7 +1,10 @@
 class ReviewsController < ApplicationController
+	
 	before_action :get_book
 	before_action :get_review , only: [:edit, :update, :destroy]
 	before_action :authenticate_user!, only:[:new, :edit]
+	load_and_authorize_resource param_method: :my_sanitizer
+	load_and_authorize_resource :through => :current_user
 	
 	
 	def index
@@ -33,10 +36,12 @@ class ReviewsController < ApplicationController
 	end
 
 	def edit
+		authorize! :update, @review 
 		
 	end	
 
 	def update
+			authorize! :update, @review
 			@review = Review.find(params[:id])
 			if @review.update(review_params) 
 				redirect_to book_path(@book)
@@ -53,6 +58,10 @@ class ReviewsController < ApplicationController
 
 
 private
+
+	def my_sanitizer
+    params.require(:review).permit(:rating, :comment)
+  	end
 
 
 	def review_params

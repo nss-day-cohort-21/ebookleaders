@@ -38,22 +38,39 @@
        </ul>
         </li>
 
+
+
        
           <li><%= link_to "Add Your Book", new_book_path %></li>
         <% if user_signed_in? %> 
-            <li><%= link_to "Edit Profile", edit_user_registration_path %></li> 
 
+
+
+
+
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li> 
 
         <% end %>
 
 
-          
         
       </ul>
 
 
 
       </div>
+
+        <!--   <div class = "links btn-group r-padding">
+           
+            <% if current_user.try(:admin?) %> 
+                <%= link_to "Add Author Books", new_book_path, class: "btn btn-custom" %>
+
+          <% elsif current_user.try(:book_promoter_role?) %> 
+                <%= link_to "Add Author Books", new_book_path, class: "btn btn-custom" %>
+            <% end %>
+           
+         </div> -->
+
     </div>
 
   </nav>
