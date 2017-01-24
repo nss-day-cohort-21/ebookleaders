@@ -11,7 +11,7 @@
 
 			<% if @book.user.author_bio.present? %>
 				<h3 class = "bookAuthor"><span>From: </span>
-					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h3>
+					<b><%= link_to "#{@book.author} Bio", user_path(@book.user_id) %></b></h3>
 					
 
 				<% else %>
