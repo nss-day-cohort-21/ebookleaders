@@ -41,7 +41,10 @@
 				<h4><b>Amazon Link: 
 				<% if @book.amazon_link.present? %>
 
-				
+				<% if @book.amazon_link.include?("kindlescout") %>
+						<% bookUrl = @book.amazon_link %>
+				<% else %>
+
 						<% s = @book.amazon_link %>
 						<% s1a = s.split('dp/')[-1] %>
 						<% s1 = s1a.split('?psc=1')[-1] %>
@@ -49,7 +52,7 @@
 						
 						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 						
-						
+				<% end %>		
 					
 						
 						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
