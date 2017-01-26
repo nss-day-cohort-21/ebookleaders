@@ -1,17 +1,17 @@
 <!-- This file is used for the profile page -->
 <div class =  "bookInfo">
 				<h1>Profile/Bio:</h1>  
-
+<br>
 <% if @user.avatar.present? %>		
-<%= image_tag @user.avatar %>
+<%= image_tag @user.avatar, class: "avatar-pic"%>
 <% end %>
 
 <% if @user.twitter_handle.present? %>	
 	<% if @user.twitter_handle.include? ("@") %>
-	<h4><%=  "Twitter Handle: " + @user.twitter_handle %></h4>
+	<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
 
 	<% else %>
-	
+
 	<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
 	<% end %>
 

@@ -366,3 +366,11 @@ p.alert, p.notice {
 .yellow{
 	color: yellow;
 }
+
+
+.avatar-pic {
+	height: 340px;
+	width: 240px;
+	margin-bottom: 7px;
+	@include background-tile;
+}
