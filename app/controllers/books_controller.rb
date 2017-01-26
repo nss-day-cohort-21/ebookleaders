@@ -8,12 +8,14 @@ end
 
 
 
+
 def index
 
 	if params[:genre].blank?
 		@books = Book.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 	elsif params[:genre] == "_All Books"
 		@books = Book.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
+		
 	else
 		@genre_id = Genre.find_by(name: params[:genre]).id
 		@books = Book.where(:genre_id => @genre_id).paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
