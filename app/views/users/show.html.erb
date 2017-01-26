@@ -6,6 +6,18 @@
 <%= image_tag @user.avatar %>
 <% end %>
 
+<% if @user.twitter_handle.present? %>	
+	<% if @user.twitter_handle.include? ("@") %>
+	<h4><%=  "Twitter Handle: " + @user.twitter_handle %></h4>
+
+	<% else %>
+	
+	<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
+	<% end %>
+
+<% end %>
+
+
 <h2> <%= @user.name %></h2>
 <% if @user.author_bio.present? %>
 

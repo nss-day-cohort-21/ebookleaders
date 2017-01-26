@@ -6,6 +6,7 @@
   <div class="form-inputs">
   	 
     <%= f.input :name, autofocus: true %>
+    <%= f.input :twitter_handle, autofocus: true, label: "Twitter Handle (Can be added at a later time.)" %>
 
     <%= f.input :email, required: true, autofocus: true %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
