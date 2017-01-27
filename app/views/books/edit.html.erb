@@ -1,8 +1,23 @@
 <h1>Edit Book</h1>
 <%= simple_form_for @book, :html => {:multipart => true} do |f| %>
+<!-- 
 <%= f.select :genre_id, @genres %>
 <p><p>
-	<%= f.file_field :book_imgage %>
+	<%= f.file_field :book_imgage %> -->
+<br>
+ 	<h4><b>Select a Book Genre:</b></h4>
+ <%= select_tag(:genre_id, options_for_select(@genres), :prompt => "Selecet a Genre", :class => "col-md-4 form-for") %>
+
+ <p><p>
+ 	<br>
+ 	<br>
+ 	<h4><b>Add Your Book Image:</b></h4>
+ 	<%= f.file_field :book_imgage,  :class => "col-md-4 form-for"%>
+ 	<br>
+ 	<br>
+
+
+
 	<%= f.input :titleLstring, label: "Title" %>
 	<%= f.input :details %> 
 	<%= f.input :author %> 
