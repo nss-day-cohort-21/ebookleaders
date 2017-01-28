@@ -10,8 +10,8 @@
 
 
 			<% if @book.user.author_bio.present? %>
-				<h3 class = "bookAuthor"><span>From: </span>
-					<b><%= link_to "#{@book.author} - See Bio", user_path(@book.user_id) %></b></h3>
+				<h4 class = "bookAuthor"><span>From: </span>
+					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h4>
 					
 
 				<% else %>
@@ -88,7 +88,7 @@
 						
 						<br>
 						<div class = "bookInfo"> 
-						<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %></a>
+						<a href= "<%= bookUrl %>" favicon.icotarget="_blank"><%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %></a>
 					</div>
 				</br>
 				<% end %>
