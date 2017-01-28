@@ -88,7 +88,7 @@
 						
 						<br>
 						<div class = "bookInfo"> 
-						<%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %>
+						<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %></a>
 					</div>
 				</br>
 				<% end %>
