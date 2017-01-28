@@ -75,6 +75,10 @@ p.alert, p.notice {
 			font-weight: bold;
 			text-transform: none;
 		}
+
+		.yellow{
+			color: yellow;		
+		}
 		
 	}
 
@@ -173,6 +177,16 @@ p.alert, p.notice {
 	width: 325px;
 	@include background-tile;
 }
+
+
+.book-teaser{
+	display: block;
+    margin: 0 auto;
+	height: 300px;
+	width: 688px;
+	
+}
+
 
 .bookInfo {
 	@include background-tile;

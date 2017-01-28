@@ -87,7 +87,7 @@ private
   	end
 	
 	def book_params
-		params.require(:book).permit(:details, :author, :titleLstring, :genre_id, :book_imgage, :amazon_link, :ebookprice, :bookprice)
+		params.require(:book).permit(:details, :author, :titleLstring, :book_teaser, :genre_id, :book_imgage, :amazon_link, :ebookprice, :bookprice)
 	end
 
 

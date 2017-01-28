@@ -35,9 +35,9 @@
 			<p><p>
 			<%= @book.details %>
 			</div>
-			<div><p><p><p><p></div>
+			<br><br>
 			  
-				<div class =  "bookInfo">
+<div class =  "bookInfo">
 				
 				<% if @book.amazon_link.present? %>
 
@@ -83,10 +83,21 @@
 			
 				</div>
 
-			
+				<% if  @book.book_teaser.present? %>
+					<div>
+						
+						<br>
+						<div class = "bookInfo"> 
+						<%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %>
+					</div>
+				</br>
+				<% end %>
+				
 
 
 	</div>
+
+
 
 	</div>
 
@@ -147,6 +158,7 @@
 		</div>	
 <p><br>		
 </div>		
+
 
 
 
