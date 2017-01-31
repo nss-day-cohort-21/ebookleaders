@@ -1,6 +1,6 @@
-namespace :bookclubpro
+namespace :bookclubpro do
 desc "Automatically posts book content to Twitter"
-task :update_ebookleaders do |variable|
+task :update_ebookleaders do 
 	require 'json'
 	require 'open-uri'
 
@@ -13,4 +13,7 @@ book = data["book.titleLstring"]
 
 client.update("#{book}")
 puts "It worked Yo"
+
+end
+
 end
