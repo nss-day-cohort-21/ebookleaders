@@ -6,12 +6,12 @@ task :update_ebookleaders do
 
 #post books to twitter
 
-url=  Book.find(5) 
-data = JSON.parse(url)
+url =  @Book.find(5) 
+#data = JSON.parse(url)
 
-book = data["book.titleLstring"]
+#book = data["book.titleLstring"]
 
-client.update("#{book}")
+client.update("#{url}")
 puts "It worked Yo"
 
 end
