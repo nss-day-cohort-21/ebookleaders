@@ -1,6 +1,6 @@
 namespace :bookclubpro do
 desc "Automatically posts book content to Twitter"
-task :update_ebookleaders do 
+task :twitterposts do 
 	# require 'json'
 	# require 'open-uri'
 
