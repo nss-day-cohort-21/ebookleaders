@@ -1,14 +1,16 @@
-# namespace :bookclubpro
-# desc "Automatically posts book content to Twitter"
-# task :update_ebookleaders do |variable|
-# 	require 'json'
-# 	require 'open-uri'
+namespace :bookclubpro
+desc "Automatically posts book content to Twitter"
+task :update_ebookleaders do |variable|
+	require 'json'
+	require 'open-uri'
 
-# #post books to twitter
+#post books to twitter
 
-# url=  Book.find(5) 
-# data = JSON.parse(url)
+url=  Book.find(5) 
+data = JSON.parse(url)
 
-# book = data["book.titleLstring"]
+book = data["book.titleLstring"]
 
-# end
+client.update("#{book}")
+puts "It worked Yo"
+end
