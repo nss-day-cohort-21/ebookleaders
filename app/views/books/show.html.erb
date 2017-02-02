@@ -1,7 +1,27 @@
 <div class = "row">
    <div class  = "col-md-4">
 
+   	<% if @book.amazon_link.present? %>
+	   	<% if @book.amazon_link.include?("kindlescout") %>
+							<% bookUrl = @book.amazon_link %>
+
+		<% else %>
+
+							<% s = @book.amazon_link %>
+							<% s1a = s.split('dp/')[-1] %>
+							<% s1 = s1a.split('?psc=1')[-1] %>
+							<% s2 = s1.split("/")[0] %>
+							<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+		<% end %>
+
+		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %></a>					
+
+	<% else %>
+
 		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
+	<% end %>
+
+
    </div>
 
 	<div class = "col-md-8">  
