@@ -5,6 +5,14 @@
 	   	<% if @book.amazon_link.include?("kindlescout") %>
 							<% bookUrl = @book.amazon_link %>
 
+
+		<% elsif  @book.amazon_link.include?("/gp/") %>
+						<% s = @book.amazon_link %>
+						<% s1a = s.split('d/')[-1] %>
+						<% s1 = s1a.split('ref')[0] %>
+						<% s2 = s1.split("/")[0] %>
+						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
 		<% else %>
 
 							<% s = @book.amazon_link %>
@@ -57,6 +65,11 @@
 			</div>
 			<br><br>
 			  
+
+			<!--  amazon linkes that didnt work until update 
+			https://www.amazon.com/dp/://www.amazon.com/gp/aw/d/0996625453/ref=tmm_pap_title_0?ie=UTF8&qid=&sr=/?tag=ebookleaders1-20  -->
+
+
 <div class =  "bookInfo">
 				
 				<% if @book.amazon_link.present? %>
@@ -65,6 +78,16 @@
 						<% bookUrl = @book.amazon_link %>
 						<h4><b>Kindle Scout: 
 						<%= link_to  " Nominate on Kindle Scout", bookUrl , target: :_blank %></b></h2>
+
+				<% elsif  @book.amazon_link.include?("/gp/") %>
+						<% s = @book.amazon_link %>
+						<% s1a = s.split('d/')[-1] %>
+						<% s1 = s1a.split('ref')[0] %>
+						<% s2 = s1.split("/")[0] %>
+						<h4><b>Amazon Link: 
+						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
 
 				<% else %>
 
