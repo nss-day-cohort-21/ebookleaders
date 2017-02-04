@@ -77,8 +77,11 @@
 						<% bookUrl = @book.amazon_link %>
 						<h4><b>Kindle Scout: 
 						<%= link_to  " Nominate on Kindle Scout", bookUrl , target: :_blank %></b></h2>
-						<% nominate_date = @book.last_nominate_day.strftime("%B %d") %>
-						<h4><%= "Last Day to Nominate:   #{nominate_date}" %></h4>
+
+							<% if @book.last_nominate_day.present? %>
+								<% nominate_date = @book.last_nominate_day.strftime("%B %d") %>
+								<h4><%= "Last Day to Nominate:  #{nominate_date}" %></h4>
+							<% end %>
 
 				<% elsif  @book.amazon_link.include?("/gp/") %>
 						<% s = @book.amazon_link %>
