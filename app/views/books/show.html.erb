@@ -60,10 +60,11 @@
 
 			<span class = "number-of-reviews">Based on <%= @book.reviews.count  %> <%= @reviewPlOrSing %></span>
 			<p><p>
+			<% if @book.details %>
 			<%= @book.details %>
 			</div>
 			<br><br>
-			  
+			<% end %>
 
 			<!--  amazon linkes that didnt work until update 
 			https://www.amazon.com/dp/://www.amazon.com/gp/aw/d/0996625453/ref=tmm_pap_title_0?ie=UTF8&qid=&sr=/?tag=ebookleaders1-20  -->
