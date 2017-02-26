@@ -157,10 +157,48 @@ p.alert, p.notice {
 
 }
 
+.row-books{
+	padding-left: 17.5%;
+}
+
+
+.left-col-title{
+	background: #008080;
+	color: #ffffff;
+	padding: 6px;
+
+	
+}
+
+.left-column {
+  position:absolute;
+  margin-left: 8.6%;
+  top:17%;
+  left:0;
+  width:14%;
+  height:100%;
+  background:#ffffff;
+  border: 3px solid #008080 ;
+  border-radius: 12px;
+
+h3{
+	text-align: center;
+	align-top: 0px;
+}
+
+ 
+h4{
+	padding-left: 11px;
+}
+
+}
+
+
+
 
 .booksize {
-	height: 350px;
-	width: 250px;
+	height: 300px;
+	width: 210px;
 	margin-bottom: 40px;
 	@include background-tile;
 }
@@ -348,6 +386,7 @@ p.alert, p.notice {
 	background: #f0f0f0;
 	border-radius: 10px;
 	padding: 9px;
+	margin-left: 18.6%;
 }
 
 
