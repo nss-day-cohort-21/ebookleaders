@@ -57,16 +57,19 @@
 	 <% end %>
   Get more exposure. It's free.</h4> 
 <% if params[:genre] !=  "_All Books" %>
-<h1 class = "currentGenre"> <%= params[:genre] %></h1>
+<div class = "padding-on-left">
+<h1> <%= params[:genre] %></h1>
 	<% else %>
 		<br>
 		<br>
 	<% end %>
 <% if @books.count == 0 %>
+
 	<h1>There are no books in this category. </h1><br>	
 	<h2>Have a Book to Promote?</h2>
 	<h3>Get Book promotions via azon and Twitter by <%= link_to "listing your book here", new_book_path %>. More exposure, More Visibility, More Sales. It's Free.</h3> 
 <% end %>
+</div>
 <!-- <h1 align = "center"> Discover New Titles </h1>
 <h2 align = "center">Great Stories. Unique Perspectives. </h2>
 <br> -->
