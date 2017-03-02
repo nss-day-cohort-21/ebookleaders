@@ -8,7 +8,6 @@ end
 
 
 
-
 def index
 
 	if params[:genre].blank?
@@ -50,6 +49,7 @@ def show
 	else
 		@average_review = @book.reviews.average(:rating)
 	end
+
 
 end
 

@@ -50,9 +50,11 @@
 				<h3 class = "bookAuthor"><span>From: </span><%= @book.author %></h3>
 			<% end %>
 
+				
 			
 			<% if 	@book.genre.present? %>
-			<h4>Category: <%= @book.genre.name %></h4>
+			<% genreUrl = "/books?genre=" + @book.genre.name %>
+			<h4>Category: <%= link_to "#{@book.genre.name}", genreUrl %></h4>
 			<% end %>  
 			<h2>Average Rating:  </h2>
 			<div class = "average_review_rating" data-score= "<%= @average_review %>"></div> 
