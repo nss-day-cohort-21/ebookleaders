@@ -76,24 +76,12 @@
 								<h4><%= "Last Day to Nominate:  #{nominate_date}" %></h4>
 							<% end %>
 
-				<% elsif  @book.amazon_link.include?("/gp/") %>
-						<% s = @book.amazon_link %>
-						<% s1a = s.split('d/')[-1] %>
-						<% s1 = s1a.split('ref')[0] %>
-						<% s2 = s1.split("/")[0] %>
-						<h4><b>Amazon Link: 
-						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
-
-						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
+				
 
 				<% else %>
 
-						<% s = @book.amazon_link %>
-						<% s1a = s.split('dp/')[-1] %>
-						<% s1 = s1a.split('?psc=1')[-1] %>
-						<% s2 = s1.split("/")[0] %>
-						<h4><b>Amazon Link: 
-						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+						<% bookUrl = @book.amazon_link %>
+				
 
 						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
 						
