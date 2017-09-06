@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SillySnap</title>
+    <title>eBookLeaders</title>
 
     <%= csrf_meta_tags %>
 
@@ -14,23 +14,24 @@
   <nav class= "navbar navbar-default"> 
     <div class= "container">
       <div class = "navbar-header"> 
-       <div class = "navbar-header navbar-logo"> <%= image_tag('sillysnaplogo.png', size: "33x33") %>
+       <div class = "navbar-header navbar-logo"> <%= image_tag('books.png', size: "50x50") %>
        </div>
-      <%= link_to   "SillySnap", root_path, class: "navbar-brand" %>
+      <%= link_to   "eBookLeaders", root_path, class: "navbar-brand" %>
     </div>
-      <ul class = "nav navbar-nav postButton">
-        <%= link_to "New Post", new_book_path %>
-       <!--  <div ><button>Upload Images</button></div>
-        <div><button>Video to Gif</button></div>
-        <div><button>Make a Meme</button></div> -->
-        <!-- <li><%= link_to "Home", root_path %></li> -->
-        
+      <ul class = "nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %> </li>
+        <% if user_signed_in? %>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+         <% else %>
+         <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-       <!--  <li><%= link_to "All Books", root_path %></li> -->
+        <li><%= link_to "All Books", root_path %></li>
         <li class = "dropdown">
-         <!-- <a href="#" class = "dropdown-toggle" data-toggle= "dropdown" role = "button" aria-expanded= "false">Genres<span class= "caret"></span></a>  --><ul class = "dropdown-menu" role = "menu">
+         <a href="#" class = "dropdown-toggle" data-toggle= "dropdown" role = "button" aria-expanded= "false">Genres<span class= "caret"></span></a> <ul class = "dropdown-menu" role = "menu">
          <% Genre.order("name").each do |genre| %>
          <li class= "<%= 'active' if params[:genre] == genre.name %>"><%= link_to genre.name, books_path(genre: genre.name), class: "link" %> </li>
          <% end %>
@@ -38,18 +39,11 @@
         </li>
 
 
-        
-        <% if user_signed_in? %>
-        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-         <% else %>
-         <li><%= link_to "Sign In", new_user_session_path %></li>
-         <li><%= link_to "Sign Up", new_user_registration_path %> </li>
-        <% end %>
 
        
-        <!--   <li><%= link_to "Add a new post", new_book_path %></li>
+          <li><%= link_to "Add Your Book", new_book_path %></li>
         <% if user_signed_in? %> 
- -->
+
 
 
 
@@ -69,10 +63,10 @@
         <!--   <div class = "links btn-group r-padding">
            
             <% if current_user.try(:admin?) %> 
-                <%= link_to "Add New Posts", new_book_path, class: "btn btn-custom" %>
+                <%= link_to "Add Author Books", new_book_path, class: "btn btn-custom" %>
 
           <% elsif current_user.try(:book_promoter_role?) %> 
-                <%= link_to "Add New Posts", new_book_path, class: "btn btn-custom" %>
+                <%= link_to "Add Author Books", new_book_path, class: "btn btn-custom" %>
             <% end %>
            
          </div> -->

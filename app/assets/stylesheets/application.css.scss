@@ -31,11 +31,8 @@
 
 
 
-
-
-
 body {
-	background-color: #000040;
+	background-color: #f5f5f5;
 	font-family: 'Lora', serif;
 }
 
@@ -56,10 +53,10 @@ p.alert, p.notice {
 
 }
 .navbar-default {
-	background-color: #323299;
-	padding-bottom: 2px;
-	padding-top: 2px;
-	height: 52px;
+	background-color: #008080;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	height: 65px;
 
 	.navbar-nav > li > a {
 		color: #fff;
@@ -74,7 +71,7 @@ p.alert, p.notice {
 			
 			color: #fff;
 			letter-spacing: 1.4px;
-			font-size: 30px;
+			font-size: 42px;
 			font-weight: bold;
 			text-transform: none;
 		}
@@ -85,7 +82,6 @@ p.alert, p.notice {
 .navbar-logo{
 			float: left;
 			padding-right: 8px;
-			padding-top: 7px;
 			
 		}
 
@@ -107,49 +103,18 @@ p.alert, p.notice {
 }
 
 
-.postButton {
-    background-color:  #efbd00;
-    border: none;
-    color: white;
-    padding: 4px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    margin-top: 9px;	
-    margin-left: 2px;
-    text-transform: lowercase;
-    text-transform: capitalize;
-}
-
-.postButtonSmall {
-    background-color:  #efbd00;
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    border-radius: 4px;
-    margin-top: 14px;	
-    text-transform: lowercase;
-    text-transform: capitalize;
-}
-
-
 
 .btn-custom {
-	color: #fff;
-	background-color:  darken(#f1c40f, 5%);
+	color: darken(#f1c40f, 5%);
+	background-color: #fff;
 	border: 1px solid darken(#f1c40f, 5%);
 	padding: 8px 20px;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-family: 'Ubuntu', sans-serif;
 	&:hover {
 		text-decoration: none;
-		background-color:  #fff;
-		color: darken(#f1c40f, 5%); 
+		background-color: darken(#f1c40f, 5%);
+		color: #fff;
 		transition: 0.5s;
 	}
 }
@@ -203,12 +168,10 @@ p.alert, p.notice {
 	@include background-tile;
 }
 
-
-
-.postdisplaysize {
-	height: auto;
-	width: 728px;
-	
+.bookdisplaysize {
+	height: 475px;
+	width: 325px;
+	@include background-tile;
 }
 
 .bookInfo {
@@ -247,8 +210,6 @@ p.alert, p.notice {
 	}
 
 }
-
-
 
 
 
@@ -305,18 +266,7 @@ p.alert, p.notice {
 
 }
 
-.homepageimage{
 
-	position: relative;
-    float: left;
-    width:  180px;
-    height: 180px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
-    padding: 0px 0px 12px 12px;
-    
-}
 
 .edit-book-form {
 
@@ -352,65 +302,6 @@ p.alert, p.notice {
 		}
 
 	}
-
-}
-
-
-.homeimagewrapper {
-	padding: 16px 0px ;
-	background-color: #323299;
-	overflow: hidden;
-	height:auto; 
-
-}
-
-.postimagewrapper {
-	padding: 16px 0px ;
-	background-color: #323299;
-	overflow: hidden;
-	height:auto; 
-
-	width: 728px;
-
-}
-
-.posttitle {
-	
-	padding-left: 12px;
-}
-
-.postdesc {
-	
-	padding-left: 12px;
-	font-size: 18px;
-}
-
-.commentswrapper {
-	padding: 4px 12px;
-	background-color: #323299;
-	overflow: hidden;
-	height:auto; 
-	width: 728px;
-	color: #fff;
-
-
-}
-
-#underlineYellow {
-	
-	text-decoration: underline;
-    -moz-text-decoration-color: yellow; 
-    text-decoration-color: #FFFF00;
-}
-
-
-.homeheading {
-	
-	font-size: 27px;
-	color: white;
-	text-align: center;
-	font-family: sans-serif;
-
 
 }
 

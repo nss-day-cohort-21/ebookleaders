@@ -1,4 +1,12 @@
-<div class = "homeheading"> Fun <span id = "underlineYellow"> Images </span> and <span id = "underlineYellow">Memes </span> , all the <span id = "underlineYellow">time</span></div>
+<h4 class = "book-submit-promo">Is your book on Amazon? 
+	 <% if user_signed_in? %>
+	 	<b><%= link_to " Add your Amazon books to eBookLeaders. ", 
+	 	 new_book_path %></b>
+	 <% else %>
+	 	<b><%= link_to " Add your Amazon books to eBookLeaders. ", 
+		  new_user_registration_path %></b>
+	 <% end %>
+  Get more exposure. It's free.</h4> 
 <% if params[:genre] !=  "_All Books" %>
 <h1 class = "currentGenre"> <%= params[:genre] %></h1>
 	<% else %>
@@ -6,19 +14,20 @@
 		<br>
 	<% end %>
 <% if @books.count == 0 %>
-	<h1>There are no posts in this category. </h1><br>	
-	 
+	<h1>There are no books in this category. </h1><br>	
+	<h2>Have a Book to Promote?</h2>
+	<h3>Get Book promotions via azon and Twitter by <%= link_to "listing your book here", new_book_path %>. More exposure, More Visibility, More Sales. It's Free.</h3> 
 <% end %>
 <!-- <h1 align = "center"> Discover New Titles </h1>
 <h2 align = "center">Great Stories. Unique Perspectives. </h2>
 <br> -->
 
-	<div class = "homeimagewrapper">
+	<div class = "row">
 
 		<% @books.each do |book| %>
-			<div class="">
+			<div class="col-md-3">
 			<a href="/books/<%= book.id %>">
-				<%= image_tag book.book_imgage.url(:book_index), class: "homepageimage" %>
+				<%= image_tag book.book_imgage.url(:book_index), class: "booksize" %>
 			</a>
 
 			</div>
