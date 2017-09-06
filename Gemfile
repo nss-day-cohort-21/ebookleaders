@@ -9,7 +9,7 @@ gem 'cancancan'
 gem 'figaro' 
 gem 'randumb'
 gem 'twitter'
-gem 'rmagick'
+#gem 'rmagick', '~> 2.15', '>= 2.15.4' #cant get it to install on July 9 2017
 gem 'aws-sdk'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
@@ -61,7 +61,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #these gems added for act as voging feature on July 11, 2017
+  gem 'rspec-rails'
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'rake', '< 11.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

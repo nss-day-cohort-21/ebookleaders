@@ -1,44 +1,37 @@
 <div class = "row">
-   <div class  = "col-md-4">
 
-		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
-   </div>
-
-	<div class = "col-md-8">  
-			<div class = "bookInfo">
-			<h2 class = "bookTitle"><%= @book.titleLstring %></h2>
+<div class = "">  
+			<div class = "commentswrapper">
+			<!-- <h2 class = "posttitle"><%= @book.titleLstring %></h2> -->
 
 
-			<% if @book.user.author_bio.present? %>
-				<h3 class = "bookAuthor"><span>From: </span>
-					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h3>
-					
+			
 
-				<% else %>
-
-				<h3 class = "bookAuthor"><span>From: </span><%= @book.author %></h3>
-			<% end %>
-
-
-			<% if 	@book.genre.present? %>
-			<h4>Genre: <%= @book.genre.name %></h4>
-			<% end %>  
-			<h2>Average Rating:  </h2>
-			<div class = "average_review_rating" data-score= "<%= @average_review %>"></div> 
+			
+				
 			<% if @book.reviews.count == 1 %>
 			  <% @reviewPlOrSing = 'review' %>
 			 <% else %>
 			 <% @reviewPlOrSing = 'reviews' %>
 			 <% end %>
 
-			<span class = "number-of-reviews">Based on <%= @book.reviews.count  %> <%= @reviewPlOrSing %></span>
+				
 			<p><p>
-			<%= @book.details %>
+			<span class = "postdesc"><%= @book.details %></span>
 			</div>
 			<div><p><p><p><p></div>
+
+
+
+   <div class  = "postimagewrapper">
+
+		<%= image_tag @book.book_imgage.url(:book_show), class: "postdisplaysize" %>
+   </div>
+
+	
 			  
-				<div class =  "bookInfo">
-				<h4><b>Amazon Link: 
+				<!-- <div class =  "bookInfo"> -->
+				<!-- <h4><b>Amazon Link: 
 				<% if @book.amazon_link.present? %>
 
 					<% if @book.author ==  "Michael Compton" %>
@@ -54,27 +47,13 @@
 						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
 						
 						
-					<% end %>
+					<% end %> -->
 						
-						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
+					<!-- 	<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2> -->
 
 				<% end %>  
 
-				<% if @book.ebookprice.present? %>
-					<h4><b>Kindle eBook: </b>
-						<% if @book.ebookprice < 0.001 %>
-							<span class = "red" ><%= number_to_currency " #{@book.ebookprice}"  %></span>
-						<% else %>
-							<%= number_to_currency " #{@book.ebookprice}"  %>
-						<% end %>
-					&nbsp;&nbsp;&nbsp;
-				<% end %>
-
-
-				<% if @book.bookprice.present? %>
-				<b>Print: </b>
-					<%= number_to_currency " #{@book.bookprice}"  %></h4>
-				<% end %>
+				</br>
 			
 				</div>
 
@@ -83,38 +62,39 @@
 
 	</div>
 
-	</div>
+	
 
 <div class = "row">
-			<div class = "col-md-4">
+			<div class = "">
 			  			
-			  			<div class =  "bookInfo">
+			  			<!-- <div class =  "bookInfo">
 			  				<div class = "links btn-group">
 			  				<h3> Reviewer or Author? </br>
-			  					 <%= link_to "Add Your Book", new_book_path, class: "btn btn-custom" %> &nbsp; &nbsp;
-			  					  <%= link_to "Add Your Bio", edit_user_registration_path, class: "btn btn-custom" %> </h3></div>
-			  			</div>
+			  					 <%= link_to "Add A Post", new_book_path, class: "btn btn-custom" %> &nbsp; &nbsp;
+			  					 <!--  <%= link_to "Add Your Bio", edit_user_registration_path, class: "btn btn-custom" %> </h3></div> -->
+			  			</div> -->
 
 
-			  			
-			  			
-			  		
-
-				<div class ="reviews"> 
+				<div class ="commentswrapper"> 
 
 
 
-					<h1>Reviews</h1>
+					<h3>Comments</h3>
 					<%= render @book.reviews %>
 					
 					
 					
 					<br/>
-					<div class = "links btn-group">
-						<%= link_to "Add Reveiw", new_book_review_path(@book), class: "btn btn-custom" %> 
-					</div>
 				</div>
-			</div>
+
+
+</div>
+					<div class = "">
+						<%= link_to "Add Comment", new_book_review_path(@book), class: "btn btn-custom" %> 
+
+					</div>
+				</br></br>	
+			
 
 
 
@@ -128,42 +108,19 @@
 
 			
 			<% if can? :update, @book %>
-				<%= link_to "Edit Book", edit_book_path(@book), class: "btn btn-custom"%>
+				<%= link_to "Edit Post", edit_book_path(@book), class: "btn btn-custom"%>
 			<% end %>
 			 
 			<% if can? :destroy, @book %>
-				<%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
+				<%= link_to "Delete Post", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
 			<% end %>
 
 			
 		</div>	
 <p><br>		
-</div>		
 
 
-<script type="text/javascript">
- $('.review-rating').raty({
- 	readOnly: true,
- 	score: function(){
- 		return $(this).attr('data-score')
- 	},
- 	path: '/assets/'
- });
 
-</script>
-
-
-<script type="text/javascript">
- $('.average_review_rating').raty({
- 	readOnly: true,
- 	path: '/assets/',
- 	score: function(){
- 		return $(this).attr('data-score')
- 	}
- 	
- });
-
-</script>
 
 
 
