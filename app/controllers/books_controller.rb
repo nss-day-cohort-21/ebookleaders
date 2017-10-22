@@ -20,6 +20,7 @@ def index
 		@books = Book.where(:genre_id => @genre_id).paginate(:page => params[:page], :per_page => 20).order('updated_at DESC')
 	end
 
+
 end
 
 
