@@ -38,8 +38,9 @@
 			<% end %>
 
 			<%# gets the twitter handle for author of book so it can be used on the books show page %>
-			Follow on Twitter: <%= @book.user.twitter_handle%>
-				
+			<% if  @book.user.twitter_handle.present? %>
+				<h4>Twitter: <%= @book.user.twitter_handle%> </h4>
+			<% end %>	
 			
 			<% if 	@book.genre.present? %>
 			<% genreUrl = "/books?genre=" + @book.genre.name %>
