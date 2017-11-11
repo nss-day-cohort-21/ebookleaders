@@ -37,6 +37,8 @@
 				<h3 class = "bookAuthor"><span>From: </span><%= @book.author %></h3>
 			<% end %>
 
+			<%# gets the twitter handle for author of book so it can be used on the books show page %>
+			Follow on Twitter: <%= @book.user.twitter_handle%>
 				
 			
 			<% if 	@book.genre.present? %>

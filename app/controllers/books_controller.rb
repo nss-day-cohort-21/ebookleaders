@@ -45,12 +45,13 @@ def create
 end
 
 def show
+	
 	if @book.reviews.blank?
 		@average_review = 0
 	else
 		@average_review = @book.reviews.average(:rating)
 	end
-
+	
 
 end
 
@@ -95,6 +96,7 @@ private
 	def find_book
 		@book = Book.find(params[:id])
 	end 
+
 
 
 end
