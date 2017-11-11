@@ -1,8 +1,28 @@
 <!-- This file is used for the profile page -->
+
+<%= render 'books/leftcolumn' %>
+
+<div class = "padding-on-left">
+
 <div class =  "bookInfo">
 				<h1>Profile/Bio:</h1>  
-				
-				
+<br>
+<% if @user.avatar.present? %>		
+<%= image_tag @user.avatar, class: "avatar-pic"%>
+<% end %>
+
+<% if @user.twitter_handle.present? %>	
+	<% if @user.twitter_handle.include? ("@") %>
+	<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
+
+	<% else %>
+
+	<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
+	<% end %>
+
+<% end %>
+
+
 <h2> <%= @user.name %></h2>
 <% if @user.author_bio.present? %>
 
@@ -24,9 +44,8 @@
 	<h3>Books by  <%= @user.name %> </h3><br>
 
 	    <div class = "row">
-
-		<% @user.books.each do |book| %>
-			<div class="col-md-2">
+		<% @user.books.order("created_at desc").each do |book| %>
+			<div class="col-md-3">
 			<a href="/books/<%= book.id %>">
 				<%= image_tag book.book_imgage.url(:book_index), class: "booksizesmaller" %>
 			</a>
@@ -45,7 +64,7 @@
 <%= link_to 'Back', url_for(:back) %>
 
 </div>
-
+</div>
 <br><br>
 
 

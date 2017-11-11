@@ -4,12 +4,18 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+#commented out omniauth-twitter due to an error earlier today
+gem 'nokogiri', '~> 1.6.8.rc2'
+gem 'omniauth-twitter'
+gem 'will_paginate', '~> 3.1'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'cancancan'
 gem 'figaro' 
 gem 'randumb'
 gem 'twitter'
-gem 'rmagick'
+#gem 'rmagick'  rmakick gave errors for some reason, during budle update
+
+
 gem 'aws-sdk'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
@@ -17,7 +23,7 @@ gem 'paperclip', '~> 5.1'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails'
 # Use postgresql as the database for Active Record
 group :production do
   gem 'pg', '~> 0.18'

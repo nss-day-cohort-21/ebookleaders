@@ -1,0 +1,10 @@
+<% if @user.twitter_handle.present? %>	
+	<% if @user.twitter_handle.include? ("@") %>
+	<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
+
+	<% else %>
+
+	<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
+	<% end %>
+
+<% end %>

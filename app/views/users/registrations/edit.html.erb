@@ -13,9 +13,12 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
+    <h4><b>Add Yourfaviconfavicon.ico Profile Pic/Avatar Image:</b></h4>
+        <%= f.file_field :avatar %>
+  
     
         <br/>
+    <%= f.input :twitter_handle, autofocus: true, label: "Twitter Handle (Optional, but adding will help exposure)" %>    
 
     <%= f.input :author_bio, autofocus: true , label: "Author Biography (leave blank if you are a reviewer)"%>
 
@@ -39,3 +42,5 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+<br>

@@ -1,0 +1,244 @@
+<!-- File backup created on April 10 2017 after making amazon link default. This is the backup prior to change.-->
+<%= render 'leftcolumn' %>
+
+<div class = "padding-on-left">
+
+<div class = "row">
+   <div class  = "col-md-4">
+
+   	<% if @book.amazon_link.present? %>
+	   	<% if @book.amazon_link.include?("kindlescout") %>
+							<% bookUrl = @book.amazon_link %>
+
+
+		<% elsif  @book.amazon_link.include?("/gp/") %>
+						<% s = @book.amazon_link %>
+						<% s1a = s.split('d/')[-1] %>
+						<% s1 = s1a.split('ref')[0] %>
+						<% s2 = s1.split("/")[0] %>
+						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+		<% else %>
+							<% s = @book.amazon_link %>
+							<% s1a = s.split('dp/')[-1] %>
+							<% s1 = s1a.split('?psc=1')[-1] %>
+							<% s2 = s1.split("/")[0] %>
+							<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+		<% end %>
+
+		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %></a>					
+
+	<% else %>
+
+		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
+	<% end %>
+
+
+   </div>
+
+	<div class = "col-md-8">  
+			<div class = "bookInfo">
+			<h2 class = "bookTitle"><%= @book.titleLstring %></h2>
+
+
+			<% if @book.user.author_bio.present? %>
+				<h4 class = "bookAuthor"><span>From: </span>
+					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h4>
+					
+
+				<% else %>
+
+				<h3 class = "bookAuthor"><span>From: </span><%= @book.author %></h3>
+			<% end %>
+
+				
+			
+			<% if 	@book.genre.present? %>
+			<% genreUrl = "/books?genre=" + @book.genre.name %>
+			<h4>Category: <%= link_to "#{@book.genre.name}", genreUrl %></h4>
+			<% end %>  
+			<h2>Average Rating:  </h2>
+			<div class = "average_review_rating" data-score= "<%= @average_review %>"></div> 
+			<% if @book.reviews.count == 1 %>
+			  <% @reviewPlOrSing = 'review' %>
+			 <% else %>
+			 <% @reviewPlOrSing = 'reviews' %>
+			 <% end %>
+
+			<span class = "number-of-reviews">Based on <%= @book.reviews.count  %> <%= @reviewPlOrSing %></span>
+			<p><p>
+			<%= @book.details %>
+			</div>
+			<br><br>
+			  
+
+			<!--  amazon linkes that didnt work until update 
+			https://www.amazon.com/dp/://www.amazon.com/gp/aw/d/0996625453/ref=tmm_pap_title_0?ie=UTF8&qid=&sr=/?tag=ebookleaders1-20  -->
+
+
+<div class =  "bookInfo">
+				
+				<% if @book.amazon_link.present? %>
+
+				<% if @book.amazon_link.include?("kindlescout") %>
+						<% bookUrl = @book.amazon_link %>
+						<h4><b>Kindle Scout: 
+						<%= link_to  " Nominate on Kindle Scout", bookUrl , target: :_blank %></b></h2>
+
+							<% if @book.last_nominate_day.present? %>
+								<% nominate_date = @book.last_nominate_day.strftime("%B %d") %>
+								<h4><%= "Last Day to Nominate:  #{nominate_date}" %></h4>
+							<% end %>
+
+				<% elsif  @book.amazon_link.include?("/gp/") %>
+						<% s = @book.amazon_link %>
+						<% s1a = s.split('d/')[-1] %>
+						<% s1 = s1a.split('ref')[0] %>
+						<% s2 = s1.split("/")[0] %>
+						<h4><b>Amazon Link: 
+						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
+
+				<% else %>
+
+						<% s = @book.amazon_link %>
+						<% s1a = s.split('dp/')[-1] %>
+						<% s1 = s1a.split('?psc=1')[-1] %>
+						<% s2 = s1.split("/")[0] %>
+						<h4><b>Amazon Link: 
+						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
+
+						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
+						
+				<% end %>		
+					
+						
+						
+
+				<% end %>  
+
+				<% if @book.ebookprice.present? %>
+					<h4><b>Kindle eBook: </b>
+						<% if @book.ebookprice < 0.001 %>
+							<span class = "red" ><%= number_to_currency " #{@book.ebookprice}"  %></span>
+						<% else %>
+							<%= number_to_currency " #{@book.ebookprice}"  %>
+						<% end %>
+					&nbsp;&nbsp;&nbsp;
+				<% end %>
+
+
+
+				<% if @book.bookprice.present? %>
+				<b>Print: </b>
+					<%= number_to_currency " #{@book.bookprice}"  %></h4>
+				<% end %>
+			
+				</div>
+
+				<% if  @book.book_teaser.present? %>
+					<div>
+						
+						<br>
+						<div class = "bookInfo"> 
+						<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %></a>
+					</div>
+				</br>
+				<% end %>
+				
+
+
+	</div>
+
+
+
+	</div>
+
+
+<br> <br>
+<div class = "row">
+			<div class = "col-md-4">
+			  			
+			  			<div class =  "bookInfo">
+			  				<div class = "links btn-group">
+			  				<h3> Reviewer or Author? </br>
+			  					 <%= link_to "Add Your Book", new_book_path, class: "btn btn-custom" %> &nbsp; &nbsp;
+			  					  <%= link_to "Add Your Bio and Pic", edit_user_registration_path, class: "btn btn-custom" %> </h3></div>
+			  			</div>
+
+
+			  			
+			  			
+			  		
+
+				<div class ="reviews"> 
+
+
+
+					<h1>Reviews</h1>
+					<%= render @book.reviews %>
+					
+					
+					
+					<br/>
+					<div class = "links btn-group">
+						<%= link_to "Add Reveiw", new_book_review_path(@book), class: "btn btn-custom" %> 
+					</div>
+				</div>
+			</div>
+
+<br>
+
+		
+		<div class = "links btn-group">
+		
+
+		<%= link_to 'Back', url_for(:back), class: "btn btn-custom" %>
+
+		
+
+			
+			<% if can? :update, @book %>
+				<%= link_to "Edit Book", edit_book_path(@book), class: "btn btn-custom"%>
+			<% end %>
+			 
+			<% if can? :destroy, @book %>
+				<%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
+			<% end %>
+
+			
+		</div>	
+<p><br>		
+</div>		
+
+
+</div>
+
+<script type="text/javascript">
+ $('.review-rating').raty({
+ 	readOnly: true,
+ 	score: function(){
+ 		return $(this).attr('data-score')
+ 	},
+ 	path: '/assets/'
+ });
+
+</script>
+
+
+<script type="text/javascript">
+ $('.average_review_rating').raty({
+ 	readOnly: true,
+ 	path: '/assets/',
+ 	score: function(){
+ 		return $(this).attr('data-score')
+ 	}
+ 	
+ });
+
+</script>
+
+
+
+

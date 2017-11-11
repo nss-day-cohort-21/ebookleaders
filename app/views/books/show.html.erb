@@ -1,7 +1,25 @@
+<%= render 'leftcolumn' %>
+
+<div class = "padding-on-left">
+
 <div class = "row">
    <div class  = "col-md-4">
 
+   	<% if @book.amazon_link.present? %>
+	   	
+					<% bookUrl = @book.amazon_link %>
+
+
+		
+
+		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %></a>					
+
+	<% else %>
+
 		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
+	<% end %>
+
+
    </div>
 
 	<div class = "col-md-8">  
@@ -10,8 +28,8 @@
 
 
 			<% if @book.user.author_bio.present? %>
-				<h3 class = "bookAuthor"><span>From: </span>
-					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h3>
+				<h4 class = "bookAuthor"><span>From: </span>
+					<b><%= link_to "#{@book.author}", user_path(@book.user_id) %></b></h4>
 					
 
 				<% else %>
@@ -19,9 +37,13 @@
 				<h3 class = "bookAuthor"><span>From: </span><%= @book.author %></h3>
 			<% end %>
 
-
+			<%# gets the twitter handle for author of book so it can be used on the books show page %>
+			Follow on Twitter: <%= @book.user.twitter_handle%>
+				
+			
 			<% if 	@book.genre.present? %>
-			<h4>Genre: <%= @book.genre.name %></h4>
+			<% genreUrl = "/books?genre=" + @book.genre.name %>
+			<h4>Category: <%= link_to "#{@book.genre.name}", genreUrl %></h4>
 			<% end %>  
 			<h2>Average Rating:  </h2>
 			<div class = "average_review_rating" data-score= "<%= @average_review %>"></div> 
@@ -35,28 +57,40 @@
 			<p><p>
 			<%= @book.details %>
 			</div>
-			<div><p><p><p><p></div>
+			<br><br>
 			  
-				<div class =  "bookInfo">
-				<h4><b>Amazon Link: 
+
+			<!--  amazon linkes that didnt work until update 
+			https://www.amazon.com/dp/://www.amazon.com/gp/aw/d/0996625453/ref=tmm_pap_title_0?ie=UTF8&qid=&sr=/?tag=ebookleaders1-20  -->
+
+
+<div class =  "bookInfo">
+				
 				<% if @book.amazon_link.present? %>
 
-					<% if @book.author ==  "Michael Compton" %>
-							<% bookUrl = @book.amazon_link %>
-						
-						<% else %>
+				<% if @book.amazon_link.include?("kindlescout") %>
+						<% bookUrl = @book.amazon_link %>
+						<h4><b>Kindle Scout: 
+						<%= link_to  " Nominate on Kindle Scout", bookUrl , target: :_blank %></b></h2>
 
-						<% s = @book.amazon_link %>
-						<% s1a = s.split('dp/')[-1] %>
-						<% s1 = s1a.split('?psc=1')[-1] %>
-						<% s2 = s1.split("/")[0] %>
-						
-						<% bookUrl = "http://www.amazon.com/dp/#{s2}/?tag=ebookleaders1-20" %>
-						
-						
-					<% end %>
-						
+							<% if @book.last_nominate_day.present? %>
+								<% nominate_date = @book.last_nominate_day.strftime("%B %d") %>
+								<h4><%= "Last Day to Nominate:  #{nominate_date}" %></h4>
+							<% end %>
+
+				
+
+				<% else %>
+
+						<% bookUrl = @book.amazon_link %>
+				
+
 						<%= link_to  "  Get a copy from Amazon", bookUrl , target: :_blank %></b></h2>
+						
+				<% end %>		
+					
+						
+						
 
 				<% end %>  
 
@@ -71,6 +105,7 @@
 				<% end %>
 
 
+
 				<% if @book.bookprice.present? %>
 				<b>Print: </b>
 					<%= number_to_currency " #{@book.bookprice}"  %></h4>
@@ -78,13 +113,26 @@
 			
 				</div>
 
-			
+				<% if  @book.book_teaser.present? %>
+					<div>
+						
+						<br>
+						<div class = "bookInfo"> 
+						<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_teaser(:book_show), class: "book-teaser" %></a>
+					</div>
+				</br>
+				<% end %>
+				
 
 
 	</div>
 
+
+
 	</div>
 
+
+<br> <br>
 <div class = "row">
 			<div class = "col-md-4">
 			  			
@@ -92,7 +140,7 @@
 			  				<div class = "links btn-group">
 			  				<h3> Reviewer or Author? </br>
 			  					 <%= link_to "Add Your Book", new_book_path, class: "btn btn-custom" %> &nbsp; &nbsp;
-			  					  <%= link_to "Add Your Bio", edit_user_registration_path, class: "btn btn-custom" %> </h3></div>
+			  					  <%= link_to "Add Your Bio and Pic", edit_user_registration_path, class: "btn btn-custom" %> </h3></div>
 			  			</div>
 
 
@@ -116,7 +164,7 @@
 				</div>
 			</div>
 
-
+<br>
 
 		
 		<div class = "links btn-group">
@@ -140,6 +188,8 @@
 <p><br>		
 </div>		
 
+
+</div>
 
 <script type="text/javascript">
  $('.review-rating').raty({

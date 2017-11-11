@@ -11,14 +11,15 @@ end
 def index
 
 	if params[:genre].blank?
-		@books = Book.all.order('created_at DESC')
+		@books = Book.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 	elsif params[:genre] == "_All Books"
-		@books = Book.all.order('created_at DESC')
+		@books = Book.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
+		
 	else
 		@genre_id = Genre.find_by(name: params[:genre]).id
-		@books = Book.where(:genre_id => @genre_id).order("created_at DESC" )
+		@books = Book.where(:genre_id => @genre_id).paginate(:page => params[:page], :per_page => 20).order('updated_at DESC')
 	end
-	
+
 
 end
 
@@ -44,11 +45,13 @@ def create
 end
 
 def show
+	
 	if @book.reviews.blank?
 		@average_review = 0
 	else
-		@average_review = @book.reviews.average(:rating).round(2)
+		@average_review = @book.reviews.average(:rating)
 	end
+	
 
 end
 
@@ -86,13 +89,14 @@ private
   	end
 	
 	def book_params
-		params.require(:book).permit(:details, :author, :titleLstring, :genre_id, :book_imgage, :amazon_link, :ebookprice, :bookprice)
+		params.require(:book).permit(:details, :author, :titleLstring, :book_teaser, :genre_id, :book_imgage, :amazon_link, :ebookprice, :bookprice, :last_nominate_day)
 	end
 
 
 	def find_book
 		@book = Book.find(params[:id])
 	end 
+
 
 
 end
