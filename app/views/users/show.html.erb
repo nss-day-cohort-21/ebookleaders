@@ -7,35 +7,42 @@
 <div class =  "bookInfo">
 				<h1>Profile/Bio:</h1>  
 <br>
-<% if @user.avatar.present? %>		
-<%= image_tag @user.avatar, class: "avatar-pic"%>
-<% end %>
+<%# start of pic and bio info %>
+	<table>
+		<tr>
+			<td class="td_padding">
+				<% if @user.avatar.present? %>		
+				<%= image_tag @user.avatar, class: "avatar-pic"%>
+				<% end %>
 
-<% if @user.twitter_handle.present? %>	
-	<% if @user.twitter_handle.include? ("@") %>
-	<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
+				<% if @user.twitter_handle.present? %>	
+					<% if @user.twitter_handle.include? ("@") %>
+					<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
 
-	<% else %>
+					<% else %>
 
-	<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
-	<% end %>
+					<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
+					<% end %>
 
-<% end %>
+				<% end %>
+			</td>
 
+			<td class="td_padding td_bottom_pad">
+				<h2> <%= @user.name %></h2>
+				<% if @user.author_bio.present? %>
 
-<h2> <%= @user.name %></h2>
-<% if @user.author_bio.present? %>
+					<h4><%= @user.author_bio %></h4>
 
-	 <h4><%= @user.author_bio %></h4>
+				<% else %>
 
-<% else %>
+					<h4><%= @user.reviewer_bio %></h4>
 
-	 <h4><%= @user.reviewer_bio %></h4>
-
-<% end %>
-
+				<% end %>
+			</td>
+		
+		</tr>
+	</table>
 </div>
-
 <br>
 <div class =  "bookInfo">
 
