@@ -12,11 +12,11 @@
 
 		
 
-		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %></a>					
+		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_image.url(:book_show), class: "bookdisplaysize" %></a>					
 
 	<% else %>
 
-		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
+		<%= image_tag @book.book_image.url(:book_show), class: "bookdisplaysize" %>
 	<% end %>
 
 
@@ -38,8 +38,13 @@
 			<% end %>
 
 			<%# gets the twitter handle for author of book so it can be used on the books show page %>
+
+			
+
 			<% if  @book.user.twitter_handle.present? %>
-				<h4>Twitter: <%= @book.user.twitter_handle%> </h4>
+				<h4>Twitter: <a class="twitter-follow-button"
+  							href="https://twitter.com/<%= @book.user.twitter_handle%>" target="_blank">
+							 <%= @book.user.twitter_handle%></a> </h4>
 			<% end %>	
 			
 			<% if 	@book.genre.present? %>

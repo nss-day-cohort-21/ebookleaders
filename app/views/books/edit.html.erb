@@ -3,7 +3,7 @@
 <!-- 
 <%= f.select :genre_id, @genres %>
 <p><p>
-	<%= f.file_field :book_imgage %> -->
+	<%= f.file_field :book_image %> -->
 <br>
  	<h4><b>Select a Book Genre:</b></h4>
  <%= select_tag(:genre_id, options_for_select(@genres), :prompt => "Selecet a Genre", :class => "col-md-4 form-for") %>
@@ -12,7 +12,7 @@
  	<br>
  	<br>
  	<h4><b>Add Your Book Image:</b></h4>
- 	<%= f.file_field :book_imgage,  :class => "col-md-4 form-for"%>
+ 	<%= f.file_field :book_image,  :class => "col-md-4 form-for"%>
  	<br>
  	<br>
  	<h4><b>Add Your Book Teaser: </b>(optional, can be added later. This will be sent with tweets.)</h4>

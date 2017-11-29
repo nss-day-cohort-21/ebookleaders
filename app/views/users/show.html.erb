@@ -7,6 +7,24 @@
 <div class =  "bookInfo">
 				<h1>Profile/Bio:</h1>  
 <br>
+<% if @user.avatar.present? %>		
+<%= image_tag @user.avatar, class: "avatar-pic"%>
+<% end %>
+
+
+<%# twitter handle link %>
+<% if @user.twitter_handle.present? %>	
+		<% if @user.twitter_handle.include? ("@") %>
+				<h4><a class="twitter-follow-button"
+				href="https://twitter.com/<%= @user.twitter_handle%>" target="_blank">
+				<%= "Twitter: " + @user.twitter_handle %></a></h4>
+		<% else %>
+
+				<h4><a class="twitter-follow-button"
+				href="https://twitter.com/<%= @user.twitter_handle%>" target="_blank">
+				<%= "Twitter: @" + @user.twitter_handle %></a></h4>
+		<% end %>
+
 <%# start of pic and bio info %>
 	<table>
 		<tr>
@@ -18,6 +36,7 @@
 				<% if @user.twitter_handle.present? %>	
 					<% if @user.twitter_handle.include? ("@") %>
 					<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
+
 
 					<% else %>
 
@@ -54,7 +73,7 @@
 		<% @user.books.order("created_at desc").each do |book| %>
 			<div class="col-md-3">
 			<a href="/books/<%= book.id %>">
-				<%= image_tag book.book_imgage.url(:book_index), class: "booksizesmaller" %>
+				<%= image_tag book.book_image.url(:book_index), class: "booksizesmaller" %>
 			</a>
 
 			</div>
