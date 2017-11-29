@@ -25,22 +25,43 @@
 				<%= "Twitter: @" + @user.twitter_handle %></a></h4>
 		<% end %>
 
-<% end %>
+<%# start of pic and bio info %>
+	<table>
+		<tr>
+			<td class="td_padding">
+				<% if @user.avatar.present? %>		
+				<%= image_tag @user.avatar, class: "avatar-pic"%>
+				<% end %>
+
+				<% if @user.twitter_handle.present? %>	
+					<% if @user.twitter_handle.include? ("@") %>
+					<h4><%=  "Twitter: " + @user.twitter_handle %></h4>
 
 
-<h2> <%= @user.name %></h2>
-<% if @user.author_bio.present? %>
+					<% else %>
 
-	 <h4><%= @user.author_bio %></h4>
+					<h4><%=  "Twitter Handle: @" + @user.twitter_handle %></h4>
+					<% end %>
 
-<% else %>
+				<% end %>
+			</td>
 
-	 <h4><%= @user.reviewer_bio %></h4>
+			<td class="td_padding td_bottom_pad">
+				<h2> <%= @user.name %></h2>
+				<% if @user.author_bio.present? %>
 
-<% end %>
+					<h4><%= @user.author_bio %></h4>
 
+				<% else %>
+
+					<h4><%= @user.reviewer_bio %></h4>
+
+				<% end %>
+			</td>
+		
+		</tr>
+	</table>
 </div>
-
 <br>
 <div class =  "bookInfo">
 

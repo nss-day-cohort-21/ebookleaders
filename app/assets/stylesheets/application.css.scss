@@ -21,7 +21,13 @@
 
 /* Variables, mixins, etc.. */
 
-	
+.td_padding {
+	padding: 14px;
+}
+
+.td_bottom_pad {
+	padding-bottom: 65px;
+}
 
 @mixin background-tile {
 	box-sizing: border-box;
