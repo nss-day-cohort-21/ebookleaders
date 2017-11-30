@@ -12,11 +12,11 @@
 
 		
 
-		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_image.url(:book_show), class: "bookdisplaysize" %></a>					
+		<a href= "<%= bookUrl %>" target="_blank"><%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %></a>					
 
 	<% else %>
 
-		<%= image_tag @book.book_image.url(:book_show), class: "bookdisplaysize" %>
+		<%= image_tag @book.book_imgage.url(:book_show), class: "bookdisplaysize" %>
 	<% end %>
 
 

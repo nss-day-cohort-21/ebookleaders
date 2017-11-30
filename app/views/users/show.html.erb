@@ -62,7 +62,7 @@
 		<% @user.books.order("created_at desc").each do |book| %>
 			<div class="col-md-3">
 			<a href="/books/<%= book.id %>">
-				<%= image_tag book.book_image.url(:book_index), class: "booksizesmaller" %>
+				<%= image_tag book.book_imgage.url(:book_index), class: "booksizesmaller" %>
 			</a>
 
 			</div>

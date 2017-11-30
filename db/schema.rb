@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203224423) do
+ActiveRecord::Schema.define(version: 20171130023759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20170203224423) do
     t.integer "book_teaser_file_size"
     t.datetime "book_teaser_updated_at"
     t.date "last_nominate_day"
+    t.string "book_imgage_file_name"
+    t.string "book_imgage_content_type"
+    t.integer "book_imgage_file_size"
+    t.datetime "book_imgage_updated_at"
   end
 
   create_table "bots", id: :serial, force: :cascade do |t|
