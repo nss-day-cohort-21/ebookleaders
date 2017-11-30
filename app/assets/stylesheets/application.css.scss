@@ -442,8 +442,11 @@ h4{
 
 
 .avatar-pic {
-	height: 340px;
-	width: 282px;
+	height: 222px;
+	width: 222px;
 	margin-bottom: 7px;
+	border-radius: 50%;
+	border: 3px solid gray;
+	// box-shadow: 2px 3px 5px 4px;
 	@include background-tile;
 }
