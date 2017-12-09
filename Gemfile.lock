@@ -163,7 +163,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.20.0)
+    pg (0.18.4)
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.3)
@@ -280,7 +280,7 @@ DEPENDENCIES
   nokogiri (~> 1.6.8.rc2)
   omniauth-twitter
   paperclip (~> 5.1)
-  pg (~> 0.18)
+  pg (~> 0.18.4)
   puma (~> 3.0)
   rails
   randumb
@@ -296,4 +296,4 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 BUNDLED WITH
-   1.14.6
+   1.16.0

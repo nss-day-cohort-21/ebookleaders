@@ -5,7 +5,7 @@
 <div class = "padding-on-left">
 
 <div class =  "bookInfo">
-				<h1>Profile/Bio:</h1>  
+				<div class="profile_heading"><h2>Profile/Bio: <%= @user.name %></h2> </div> 
 <br>
 
 <%# start of pic and bio info %>
@@ -31,7 +31,7 @@
 			</td>
 
 			<td class="td_padding td_bottom_pad">
-				<h2> <%= @user.name %></h2>
+				
 				<% if @user.author_bio.present? %>
 
 					<h4><%= @user.author_bio %></h4>
@@ -51,7 +51,7 @@
 
 
 <% if @user.books.present? %>
-	<h3>Books by  <%= @user.name %> </h3><br>
+	<div class="profile_heading"><h3>Books by  <%= @user.name %> </h3></div><br>
 
 	    <div class = "row">
 		<% @user.books.order("created_at desc").each do |book| %>
