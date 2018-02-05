@@ -1,4 +1,4 @@
-# BookClubPro (Book Review Site)
+# BookClubPro - Book Review Site - (Back End Capstone built in Nashville Software School, along with sillysnap.com being built once in AngularJS and once in ROR).
 
 Built with Ruby on Rails 5, Ruby 2.4.2, PostgreSQL db, Bootstrap 4.
 
