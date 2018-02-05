@@ -23,3 +23,5 @@ Deployment Instructions:
 4. Run rails server: type rails s
 5. Open browser and type: http://localhost:3000
 6. Have fun.
+
+A live version of the site can be seen at http://www.bookclubpro.com
