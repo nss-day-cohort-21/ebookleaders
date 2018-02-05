@@ -1,6 +1,6 @@
 # BookClubPro (Book Review Site)
 
-Built with Ruby on Rails V5 , PostgreSQL db, Bootstrap 4.
+Built with Ruby on Rails 5, Ruby 2.4.2, PostgreSQL db, Bootstrap 4.
 
 
 ![Alt text](bookclubpro1.png?raw=true "Title")
