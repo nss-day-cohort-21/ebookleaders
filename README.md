@@ -16,7 +16,7 @@ Ruby on Rails, PostgreSQL installed and an IDE like VS code, Sublime Text or sim
 
 
 
-Deployment Instructions:
+## Deployment Instructions:
 1. Clone Repo
 2. Run bundle install
 3. Run rails db:migrate
