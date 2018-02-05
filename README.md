@@ -1,24 +1,25 @@
-# README
+# BookClubPro (Book Review Site)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built with Ruby on Rails V5 , PostgreSQL db, Bootstrap 4.
 
-Things you may want to cover:
 
-* Ruby version
+![Alt text](bookclubpro1.png?raw=true "Title")
+----------------------------------------
+![Alt text](bookclubpro2.png?raw=true "Title")
+----------------------------------------
 
-* System dependencies
 
-* Configuration
+## Requirements
 
-* Database creation
+Ruby on Rails, PostgreSQL installed and an IDE like VS code, Sublime Text or similar. 
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+Deployment Instructions:
+1. Clone Repo
+2. Run bundle install
+3. Run rails db:migrate
+4. Run rails server: type rails s
+5. Open browser and type: http://localhost:3000
+6. Have fun.
