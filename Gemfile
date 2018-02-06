@@ -13,11 +13,12 @@ gem 'cancancan'
 gem 'figaro' 
 gem 'randumb'
 gem 'twitter'
-#gem 'rmagick'  rmakick gave errors for some reason, during budle update
+gem 'rails_admin', '~> 1.2'
+#gem 'rmagick'  rmakick gave errors for some reason, during bundle update
 
 
 gem 'aws-sdk'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'

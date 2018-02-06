@@ -2,6 +2,7 @@
 	belongs_to :user
 	belongs_to :genre
 	has_many :reviews
+	
  
 
 	has_attached_file :book_imgage, styles: { book_index: "245x345>", book_show: "310x460>" }, default_url: "/images/:style/missing.png"
