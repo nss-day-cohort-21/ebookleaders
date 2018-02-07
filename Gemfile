@@ -7,7 +7,7 @@ end
 #commented out omniauth-twitter due to an error earlier today
 gem 'nokogiri', '~> 1.6.8.rc2'
 gem 'omniauth-twitter'
-gem 'will_paginate', '~> 3.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'cancancan'
 gem 'figaro' 
@@ -18,7 +18,7 @@ gem 'rails_admin', '~> 1.2'
 
 
 gem 'aws-sdk'
-gem 'kaminari'
+gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
