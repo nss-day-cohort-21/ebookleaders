@@ -17,7 +17,7 @@ gem 'rails_admin', '~> 1.2'
 #gem 'rmagick'  rmakick gave errors for some reason, during bundle update
 
 
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+gem 'aws-sdk', '< 2.0'
 gem 'kaminari', '~> 0.17.0'
 gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
