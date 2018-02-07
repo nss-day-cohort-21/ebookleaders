@@ -7,13 +7,14 @@ end
 #commented out omniauth-twitter due to an error earlier today
 gem 'nokogiri', '~> 1.6.8.rc2'
 gem 'omniauth-twitter'
-gem 'will_paginate', '~> 3.1'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'cancancan'
 gem 'figaro' 
 gem 'randumb'
 gem 'twitter'
-#gem 'rmagick'  rmakick gave errors for some reason, during budle update
+gem 'rails_admin', '~> 1.2'
+#gem 'rmagick'  rmakick gave errors for some reason, during bundle update
 
 
 gem 'aws-sdk'

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   
-  get 'homes/show'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
 
   #get 'users/show'
 
@@ -12,11 +13,14 @@ Rails.application.routes.draw do
 		resources :reviews
 
 	end	
+
+	get 'homes/show'
 resources :pages
 match ':controller(/:action(/:id))', :via => :get
 # get '/bio' => 'pages#bio'
  get '/show' => 'pages#show'
 
 root 'books#index'
+
 
 end
