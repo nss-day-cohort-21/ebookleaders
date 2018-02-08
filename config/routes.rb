@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 	resources :users
 	resources :books do
 		resources :reviews
-
 	end	
 
 	get 'homes/show'
@@ -19,7 +18,6 @@ resources :pages
 match ':controller(/:action(/:id))', :via => :get
 # get '/bio' => 'pages#bio'
  get '/show' => 'pages#show'
-
 root 'books#index'
 
 
