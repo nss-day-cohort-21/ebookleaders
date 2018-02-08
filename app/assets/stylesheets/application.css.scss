@@ -42,7 +42,7 @@
 body {
 	background-color: #f5f5f5;
 	font-family: 'Lora', serif;
-	padding-top: 85px;
+	padding-top: 72px;
 
 }
 
@@ -129,6 +129,25 @@ p.alert, p.notice {
 	padding: 4px 0px;
 }
 
+// .search_box {
+// 	margin-right: 122px;
+// }
+
+.btn_search {
+	margin-right: 122px;
+	color: darken(#f1c40f, 5%);
+	background-color: #fff;
+	border: 1px solid darken(#f1c40f, 5%);
+	// padding: 8px 20px;
+	border-radius: 5px;
+	font-family: 'Ubuntu', sans-serif;
+	&:hover {
+		text-decoration: none;
+		background-color: darken(#f1c40f, 5%);
+		color: #fff;
+		transition: 0.5s;
+	}
+}
 
 .btn-custom {
 	color: darken(#f1c40f, 5%);
@@ -181,6 +200,10 @@ p.alert, p.notice {
 
 .row-books{
 	padding-left: 17.5%;
+}
+
+.right {
+	text-align: right
 }
 
 
