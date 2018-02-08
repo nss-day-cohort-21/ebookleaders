@@ -78,7 +78,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # gets forgotten passwords
-  config.action_mailer.default_url_options = { :host => 'bookclubpro.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://bookclubpro.herokuapp.com' }
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
