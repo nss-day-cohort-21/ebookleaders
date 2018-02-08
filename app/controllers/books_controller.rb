@@ -10,8 +10,8 @@ end
 
 def index
 	# used for search
-  if params[:search]
-      @books = Book.search(params[:search]).order('created_at DESC')
+	if params[:search]
+		@books = Book.paginate(page: params[:page],:per_page => 20).search(params[:search]).order('created_at DESC')
 	elsif params[:genre].blank?
 		@books = Book.paginate(:page => params[:page], :per_page => 20).order('created_at DESC')
 	elsif params[:genre] == "_All Books"
