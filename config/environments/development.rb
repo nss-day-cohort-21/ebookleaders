@@ -26,8 +26,23 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+address: “smtp.gmail.com”,
+port: 587,
+domain: ENV[“GMAIL_DOMAIN”],
+authentication: “plain”,
+enable_starttls_auto: true,
+user_name: ENV[“GMAIL_USERNAME”],
+password: ENV[“GMAIL_PASSWORD”]
+}
 
   config.action_mailer.perform_caching = false
 
@@ -37,6 +52,7 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
   
+
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
