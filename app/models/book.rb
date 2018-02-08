@@ -12,4 +12,13 @@
   validates_attachment_content_type :book_teaser, content_type: /\Aimage\/.*\z/
 
 
+	# search feature
+  def self.search(search)
+		if search
+			self.where("LOWER(details) like ?", "%#{search.downcase}%")
+		else
+			self.all
+		end
+	end
+
 end

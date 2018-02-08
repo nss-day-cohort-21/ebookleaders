@@ -52,6 +52,7 @@
             <li><%= link_to "Edit Profile", edit_user_registration_path %></li> 
 
         <% end %>
+        
 
  <ul class="navbar-right">
     <% if user_signed_in? %>
@@ -86,9 +87,15 @@
 
   </nav>
 
+ <ul class="search_box right">
+          <%# search box on navbar %>
+          <%= form_tag books_path, :method => 'get' do %>
+              <%= text_field_tag :search, params[:search] %>
+             <%= submit_tag "Search", :name => nil,  class:"btn_search"%>
+           <% end %>
+  </ul> 
 
-
-
+  
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
