@@ -129,35 +129,20 @@ p.alert, p.notice {
 	padding: 4px 0px;
 }
 
-.btn_admin {
-	text-decoration: none;
-	background-color: darken(#f1c40f, 5%);
-	color: #fff;
-		transition: 0.5s;
-	&:hover {
-		color: darken(#f1c40f, 5%);
-		background-color: #fff;
-		border: 1px solid darken(#f1c40f, 5%);
-		// padding: 8px 20px;
-		border-radius: 5px;
-		font-family: 'Ubuntu', sans-serif;
-		
-	}
-}
 
 .btn_search {
-	text-decoration: none;
 		background-color: darken(#f1c40f, 5%);
 		color: #fff;
-		transition: 0.5s;
-	&:hover {
-		color: darken(#f1c40f, 5%);
-		background-color: #fff;
 		border: 1px solid darken(#f1c40f, 5%);
-		// padding: 8px 20px;
+
 		border-radius: 5px;
 		font-family: 'Ubuntu', sans-serif;
-		
+	&:hover {
+		text-decoration: none;
+		color: darken(#f1c40f, 5%);
+		background-color: #fff;
+		transition: 0.5s;
+		// padding: 8px 20px;
 	}
 }
 
