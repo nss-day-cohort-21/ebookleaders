@@ -2,7 +2,9 @@
 	<h3 class = "left-col-title">Categories</h3>
 </br>
 	<% Genre.order("name").each do |genre| %>
-    <h4 class= "<%= 'chosen' if params[:genre] == genre.name %>"><%= link_to genre.name, books_path(genre: genre.name), class: "link" %> </h4>
+		<% if genre.name != "_All Books" %>
+			<h4 class= "<%= 'chosen' if params[:genre] == genre.name %>"><%= link_to genre.name, books_path(genre: genre.name), class: "link" %> </h4>
+		<% end %>
 	<% end %>
 
 </div>
