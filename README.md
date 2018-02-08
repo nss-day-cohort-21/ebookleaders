@@ -6,7 +6,7 @@ Built with Ruby on Rails 5, Ruby 2.4.2, PostgreSQL db, Bootstrap 4.
 
 ![Alt text](bookclubpro5.png?raw=true "Title")
 ----------------------------------------
-![Alt text](bookclubpro4.png?raw=true "Title")
+![Alt text](bookclubpro5b.png?raw=true "Title")
 ----------------------------------------
 
 
