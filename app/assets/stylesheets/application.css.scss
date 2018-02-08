@@ -131,8 +131,8 @@ p.alert, p.notice {
 
 .btn_admin {
 	text-decoration: none;
-		background-color: #fad606;
-		color: #fff;
+	background-color: darken(#f1c40f, 5%);
+	color: #fff;
 		transition: 0.5s;
 	&:hover {
 		color: darken(#f1c40f, 5%);
