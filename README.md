@@ -8,6 +8,9 @@ Built with Ruby on Rails 5, Ruby 2.4.2, PostgreSQL db, Bootstrap 4.
 ----------------------------------------
 ![Alt text](bookclubpro5b.png?raw=true "Title")
 ----------------------------------------
+
+## An Admin Area which is useful for searching/adding/editing/or deleting content.
+
 ![Alt text](bcpadmin1.png?raw=true "Title")
 ----------------------------------------
 ![Alt text](bcpadmin2.png?raw=true "Title")
