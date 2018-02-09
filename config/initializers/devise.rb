@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   # config.mailer_sender = 'BookClubPro Email Reset'
 
-  # Configure the class responsible to send e-mails.
+  # Configure the class responsible to send e-mails.brew install openssl
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
