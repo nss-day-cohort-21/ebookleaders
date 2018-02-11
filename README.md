@@ -27,11 +27,11 @@ Ruby on Rails, PostgreSQL installed and an IDE like VS code, Sublime Text or sim
 
 
 ## Deployment Instructions:
-1. Clone Repo
-2. Run bundle install
-3. Run rails db:migrate
-4. Run rails server: type rails s
-5. Open browser and type: http://localhost:3000
+1. Clone the Repo
+2. Run ```bundle install```
+3. Run ```rails db:migrate```
+4. Run rails server:  ```rails s```
+5. Open browser and type: ```http://localhost:3000```
 6. Have fun.
 
 A live version of the site can be seen at http://www.bookclubpro.com
