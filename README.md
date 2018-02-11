@@ -39,7 +39,7 @@ bundle install
 ```
 rails db:migrate
 ```
-4. Run rails server:  
+4. Run rails server by typing in the terminal:  
 ```
 rails s
 ```
