@@ -31,11 +31,11 @@ Ruby on Rails, PostgreSQL installed and an IDE like VS code, Sublime Text or sim
 1. Clone the Repo
 ```
 
-2. CD into the folder and Run 
+2. CD into the folder and install the gems by typing in the terminal: 
 ```
 bundle install
 ```
-3. Run 
+3. Create the Database by typing in the terminal: 
 ```
 rails db:migrate
 ```
