@@ -1,4 +1,4 @@
-![Alt text](bookclubpro_logo.png.png?raw=true "Title")
+![Alt text](bookclubpro_logo.png?raw=true "Title")
 
 # BookClubPro - Book Review Site 
 ## This is the Back End Capstone built in Nashville Software School, along with sillysnap.com being built once in AngularJS and once in ROR.
