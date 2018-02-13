@@ -93,7 +93,7 @@
   <ul class="right">
           <%# search box on navbar %>
           <%= form_tag books_path, :method => 'get' do %>
-              <%= text_field_tag :search, params[:search] %>
+              <%= text_field_tag :search, params[:search], placeholder:"Search Books", class:"left" %>
              <%= submit_tag "Search", :name => nil,  class:"btn_search"%>
            <% end %>
   
