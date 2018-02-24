@@ -15,7 +15,7 @@
 	# search feature
   def self.search(search)
 		if search
-			self.where("LOWER(details) like ?", "%#{search.downcase}%")
+			self.where("lower(details) || lower(author) like ?", "%#{search.downcase}%")
 		else
 			self.all
 		end
