@@ -51,6 +51,8 @@ rails s
 ```
 http://localhost:3000
 ```
-7. Have fun.
+7. Start uploading books.
+
+8. Have fun.
 
 A live version of the site can be seen at http://www.bookclubpro.com
