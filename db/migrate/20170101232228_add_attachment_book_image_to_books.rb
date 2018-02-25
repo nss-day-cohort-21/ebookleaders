@@ -6,6 +6,6 @@ class AddAttachmentBookImageToBooks < ActiveRecord::Migration[5.0]
   end
 
   def self.down
-    remove_attachment :books, :book_imgage
+    # remove_attachment :books, :book_imgage
   end
 end

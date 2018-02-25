@@ -1,5 +1,11 @@
 class AddEbookpriceToBooks < ActiveRecord::Migration[5.0]
-  def change
+ 
+  def self.up
     add_column :books, :ebookprice, :integer
   end
+
+  def self.down
+    # remove_column :books, :ebookprice, :integer
+  end
+  
 end
