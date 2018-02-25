@@ -39,14 +39,18 @@ bundle install
 ```
 rails db:migrate
 ```
-4. Run rails server by typing in the terminal:  
+4. Seed the Database with categories by typing in the terminal: 
+```
+rails db:seed
+```
+5. Run rails server by typing in the terminal:  
 ```
 rails s
 ```
-5. Open browser and type: 
+6. Open browser and type: 
 ```
 http://localhost:3000
 ```
-6. Have fun.
+7. Have fun.
 
 A live version of the site can be seen at http://www.bookclubpro.com
