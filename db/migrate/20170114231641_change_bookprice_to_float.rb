@@ -1,5 +1,10 @@
 class ChangeBookpriceToFloat < ActiveRecord::Migration[5.0]
-  def change
-  	change_column :books, :bookprice, :float
+
+  def self.up
+    change_column :books, :bookprice, :float
+    end
+
+  def self.down
+    # change_column :books, :bookprice, :integer
   end
 end
