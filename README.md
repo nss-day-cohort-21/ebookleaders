@@ -47,7 +47,7 @@ rails db:seed
 ```
 rails s
 ```
-6. Open browser and type: 
+6. Open your favorite Web Browser and type: 
 ```
 http://localhost:3000
 ```
