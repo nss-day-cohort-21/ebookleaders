@@ -60,7 +60,7 @@
 				<% if book.bookprice.present? || book.ebookprice.present? %>
 				  <div><a href='<%= book.amazon_link %>'target="_blank"> <%= "Print:  #{book.bookprice}" if book.bookprice? %> <%= "eBook:  #{book.ebookprice} "  if book.ebookprice? %></a></div>
 				<% else %>
-					<%= "" %>
+					<div><%= "" %></div>
 				<% end %>
 			</a>
 
