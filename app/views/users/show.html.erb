@@ -34,10 +34,10 @@
 				
 				<% if @user.author_bio.present? %>
 
-					<h4><%= auto_link(@user.author_bio, :all, :target => "_blank", :class => "comments_link") %></h4>
+					<h4><%= auto_link(@user.author_bio, :all, :target => "_blank", :class => "") %></h4>
 
 				<% else %>
-					<h4><%= auto_link(@user.reviewer_bio, :all, :target => "_blank", :class => "comments_link") %></h4>
+					<h4><%= auto_link(@user.reviewer_bio, :all, :target => "_blank", :class => "") %></h4>
 
 				<% end %>
 			</td>
