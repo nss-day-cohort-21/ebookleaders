@@ -15,6 +15,8 @@ gem 'randumb'
 gem 'twitter'
 gem 'rails_admin', '~> 1.2'
 #gem 'rmagick'  rmakick gave errors for some reason, during bundle update
+gem 'rails_autolink', '~> 1.1', '>= 1.1.6'
+
 
 
 gem 'aws-sdk', '< 2.0'
