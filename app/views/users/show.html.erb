@@ -58,7 +58,7 @@
 			<a href="/books/<%= book.id %>">
 				<%= image_tag book.book_imgage.url(:book_index), class: "booksizesmaller" %></a>
 				<% if book.amazon_link.present? %>
-				<h4>Amazon</h4>
+				<h4><%= "Amazon" %></h4>
 				  <div><a href='<%= book.amazon_link %>'target="_blank"> <%= "Print:  #{book.bookprice}" if book.bookprice? %> <%= "eBook:  #{book.ebookprice} "  if book.ebookprice? %></a></div>
 				<% end %>
 			</a>
